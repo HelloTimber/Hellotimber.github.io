@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>附加内容</title>
+<style type="text/css">
+.style1 {
+	text-align: center;
+	font-size: 32pt;
+	color: #FFFFFF;
+	text-indent: 0em;
+}
+.style2 {
+	font-size: 18pt;
+	text-align: left;
+	color: #FFFFFF;
+	text-indent: 2em;
+	a {text-decoration:none;}
+	a:link {color:#00AAAA;}
+	a:visited {color:#FF6600;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#00AAAA;}
+}
+.style3 {
+	font-size: 30pt;
+}
+.style4 {
+	font-size: 20pt;
+}
+.style5 {
+	text-align: center;
+	margin-bottom: 17px;
+}
+</style>
+</head>
+
+<body style="background:#232323 url('../images/bg01.jpg') no-repeat; color: #232323; background-position: bottom center; background-attachment: fixed; background-size: cover;">
+
+<div class="style1">
+<p><strong>附加内容</strong></p>
+<div class="style2">
+<p>请点击叛徒首领。</p>
+
+
+<CENTER><img  id="pic1"; src="../../TraitorLead/TraitorLead_black.png"; width="827" height="1080"; onclick="jumpToImage()";></CENTER>
+<CENTER><img  id="pic2" src="../../TraitorLead/TraitorLead_dark.png"; width="827" height="1080"; onclick="jumpToImage()"; style="display: none;"></CENTER>
+<CENTER><img  id="pic3" src="../../TraitorLead/TraitorLead.png"; width="827" height="1080"; onclick="jumpToImage()"; style="display: none;"></CENTER>
+<CENTER><img  id="pic4" src="../../TraitorLead/TraitorLead_emo3.png"; width="827" height="1080"; onclick="jumpToImage()"; style="display: none;"></CENTER>
+<CENTER><img  id="pic5" src="../../TraitorLead/TraitorLead_emo2.png"; width="827" height="1080"; onclick="jumpToImage()"; style="display: none;"></CENTER>
+<CENTER><img  id="pic6" src="../../TraitorLead/TraitorLead_maskon.png"; width="827" height="1080"; onclick="jumpToImage()"; style="display: none;"></CENTER>
+<CENTER><img  id="pic7" src="../../TraitorLead/TraitorLead_maskon_dark.png"; width="827" height="1080"; onclick="jumpToImage()"; style="display: none;"></CENTER>
+<CENTER><img  id="pic8" src="../../TraitorLead/TraitorLead_maskon_black.png"; width="827" height="1080"; onclick="jumpToImage()"; style="display: none;"></CENTER>
+ 
+<center><a href="javascript:void(0);" onclick="javascript:mPlay(&#39;TL_meet01&#39;);"><img src="../images/btn_01_off.png"; loading="eager"; class="off" style="opacity: 1;"><img src="../images/btn_01_on.png"; loading="eager"; class="on" style="opacity: 0; display: inline; "></a><a href="javascript:void(0);" onclick="javascript:mPlay(&#39;TL_meet04&#39;);"><img src="../images/btn_02_off.png"; loading="eager"; class="off" style="opacity: 1;"><img src="../images/btn_02_on.png"; loading="eager"; class="on" style="opacity: 0; display: inline; "></a><a href="javascript:void(0);" onclick="javascript:mPlay(&#39;TL_wrongchoice01&#39;);"><img src="../images/btn_03_off.png"; loading="eager"; class="off" style=""><img src="../images/btn_03_on.png"; loading="eager"; class="on" style="opacity: 0; display: inline; "></a></center>
+<div class="style1">
+<p>CV: Cotil</p>
+<div class="style2">
+<p>原稿作者：嫌疑人Susp3ct <a href="https://space.bilibili.com/392504367" target=_blank>[Bilibili主页]</a></p>
+<p>电子版转绘作者：哈喽，木头？ <a href="https://space.bilibili.com/10382978" target=_blank>[Bilibili主页]</a></p>
+<p>插画在Pixiv的发布地址：<a href="https://www.pixiv.net/artworks/118279495" target=_blank>[点击跳转]</a></p>
+<p>以此制作的《熵：零 - 起义》伪视觉小说视频：<a href="https://www.bilibili.com/video/BV1Cf421S7op" target=_blank>[点击跳转]</a></p>
+
+<p class="style2"><a href="welcome.htm">返回</a></p>
+
+<script src="../pages/buzz.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+function mPlay(s){
+	if (!buzz.isSupported()) {
+		$('body').append('<embed src="../audio/' + s + '.wav" autostart="true" hidden="true" loop="false">');
+	} else {
+		buzz.all().stop();
+		var snd = new buzz.sound("../audio/" + s, {formats: [ "wav" ]});
+		snd.play();
+	}
+}
+</script>
+
+<script>
+    function jumpToImage()
+	{
+        var pic1 = document.getElementById("pic1");
+        var pic2 = document.getElementById("pic2");
+		var pic3 = document.getElementById("pic3");
+        var pic4 = document.getElementById("pic4");
+		var pic5 = document.getElementById("pic5");
+		var pic6 = document.getElementById("pic6");
+		var pic7 = document.getElementById("pic7");
+		var pic8 = document.getElementById("pic8");
+        if (pic1.style.display != "none")
+		{
+            pic1.style.display = "none";
+            pic2.style.display = "inline";
+			pic3.style.display = "none";
+			pic4.style.display = "none";
+			pic5.style.display = "none";
+			pic6.style.display = "none";
+			pic7.style.display = "none";
+			pic8.style.display = "none";
+        }
+		else if(pic2.style.display == "inline")
+		{
+            pic1.style.display = "none";
+            pic2.style.display = "none";
+			pic3.style.display = "inline";
+			pic4.style.display = "none";
+			pic5.style.display = "none";
+			pic6.style.display = "none";
+			pic7.style.display = "none";
+			pic8.style.display = "none";
+        }
+		else if(pic3.style.display == "inline")
+		{
+            pic1.style.display = "none";
+            pic2.style.display = "none";
+			pic3.style.display = "none";
+			pic4.style.display = "inline";
+			pic5.style.display = "none";
+			pic6.style.display = "none";
+			pic7.style.display = "none";
+			pic8.style.display = "none";
+        }
+		else if(pic4.style.display == "inline")
+		{
+            pic1.style.display = "none";
+            pic2.style.display = "none";
+			pic3.style.display = "none";
+			pic4.style.display = "none";
+			pic5.style.display = "inline";
+			pic6.style.display = "none";
+			pic7.style.display = "none";
+			pic8.style.display = "none";
+        }
+		else if(pic5.style.display == "inline")
+		{
+            pic1.style.display = "none";
+            pic2.style.display = "none";
+			pic3.style.display = "none";
+			pic4.style.display = "none";
+			pic5.style.display = "none";
+			pic6.style.display = "inline";
+			pic7.style.display = "none";
+			pic8.style.display = "none";
+        }
+		else if(pic6.style.display == "inline")
+		{
+            pic1.style.display = "none";
+            pic2.style.display = "none";
+			pic3.style.display = "none";
+			pic4.style.display = "none";
+			pic5.style.display = "none";
+			pic6.style.display = "none";
+			pic7.style.display = "inline";
+			pic8.style.display = "none";
+        }
+		else if(pic7.style.display == "inline")
+		{
+            pic1.style.display = "none";
+            pic2.style.display = "none";
+			pic3.style.display = "none";
+			pic4.style.display = "none";
+			pic5.style.display = "none";
+			pic6.style.display = "none";
+			pic7.style.display = "none";
+			pic8.style.display = "inline";
+        }
+		else if(pic8.style.display == "inline")
+		{
+            pic1.style.display = "inline";
+            pic2.style.display = "none";
+			pic3.style.display = "none";
+			pic4.style.display = "none";
+			pic5.style.display = "none";
+			pic6.style.display = "none";
+			pic7.style.display = "none";
+			pic8.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+
+</html>
+
+
