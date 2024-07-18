@@ -3,7 +3,7 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>音频故障修复办法</title>
+<title>问题修复办法</title>
 <style type="text/css">
 .style1 {
 	text-align: center;
@@ -22,10 +22,10 @@
 	a:active {color:#00AAAA;}
 }
 .style3 {
-	font-size: 12pt;
-	text-align: left;
+	font-size: 8pt;
+	text-align: center;
 	color: #FFFFFF;
-	text-indent: 2em;
+	text-indent: 0em;
 }
 .style4 {
 	font-size: 20pt;
@@ -49,6 +49,30 @@
 <p>这是由于游戏中曾经读取过的音频生成了缓存文件，而新替换的音频与缓存文件中原来的信息冲突导致。</p>
 <CENTER><IMG SRC="../images/pg02_01.jpg"></CENTER>
 <p>请将Uprising/sound目录下和Uprising/custom/sound目录下的sound.cache文件删除，然后重启游戏即可。</p>
+<hr>
+<div class="style1">
+<p><strong>游戏易闪退修复办法</strong></p>
+<div class="style2">
+<p>在游戏的运行过程中，在游戏切换关卡、读取存档时，可能会发生游戏突然崩溃，然后弹出一个挤满了稀奇古怪路径或者干脆乱码的报错窗口，比如像是这样：</p>
+<CENTER><IMG SRC="../images/pg02_02.jpg"></CENTER>
+<p>又或者像是这样：</p>
+<CENTER><IMG SRC="../images/pg02_03.jpg"></CENTER>
+<p>崩溃并产生此报错的情况，似乎在此模组章节2《增援行动》末尾登上运输机后，切换关卡至章节3《路遇不测》时有极大概率会发生一次。</p>
+<p>以及您可能打开过游戏的控制台，并且在游戏的控制台中有看到过像这样一大堆有关vcd文件的问号乱码报错：</p>
+<CENTER><a href="../images/pg02_04.png" target="_blank">
+        <img src="../images/pg02_04.png" alt="点击查看大图" width="683" height="384"/>
+		</a></CENTER>
+<p class="style3"><a href="../images/pg02_04.png" target="_blank">(点击查看大图)</a></p>
+<div class="style2">
+<p>在此本地化补丁包压缩包中，提供了一个专门用于修复游戏容易发生闪退的批处理程序：</p>
+<CENTER><IMG SRC="../images/pg02_05.jpg"></CENTER>
+<p>此批处理程序可以用于尝试修复上面描述的问题，其方法是清除模组目录和custom本地化补丁目录下的scenes.image文件。</p>
+<p>请确保此批处理文件位于Steam/steamapps/sourcemods路径下（即与Uprising文件夹并列）：</p>
+<CENTER><IMG SRC="../images/pg02_06.jpg"></CENTER>
+<p>您只需要执行此批处理程序，并按任意键进行即可。</p>
+<p>（其实非常建议在安装此本地化补丁包时就直接执行以下此程序）</p>
+<CENTER><IMG SRC="../images/pg02_07.jpg"></CENTER>
+<p>执行后，请重新启动游戏，检查控制台中是否还有浅红色的问号乱码报错。若没有，则代表此问题已经解决。</p>
 <p class="style2"><a href="welcome.htm">返回</a></p>
 
 </body>

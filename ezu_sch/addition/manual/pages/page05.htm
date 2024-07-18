@@ -68,10 +68,10 @@
 <script type="text/javascript">
 function mPlay(s){
 	if (!buzz.isSupported()) {
-		$('body').append('<embed src="../audio/' + s + '.wav" autostart="true" hidden="true" loop="false">');
+		$('body').append('<embed src="../audio/' + s + '.mp3" autostart="true" hidden="true" loop="false">');
 	} else {
 		buzz.all().stop();
-		var snd = new buzz.sound("../audio/" + s, {formats: [ "wav" ]});
+		var snd = new buzz.sound("../audio/" + s, {formats: [ "mp3" ]});
 		snd.play();
 	}
 }
