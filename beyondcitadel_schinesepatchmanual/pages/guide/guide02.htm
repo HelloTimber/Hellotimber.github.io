@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>工作台</title>
+<style type="text/css">
+.style1 {
+	text-align: center;
+	font-size: 32pt;
+	color: #FFFFFF;
+}
+.style2 {
+	font-size: 18pt;
+	text-align: left;
+	color: #FFFFFF;
+	text-indent: 2em;
+	padding-left: 3em;
+	padding-right: 3em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+}
+.style3 {
+	text-align: left;
+	font-size: 24pt;
+	text-indent: 2em;
+	padding-left: 2em;
+	padding-right: 2em;
+	color: #FFFFFF;
+	text-indent: 0em;
+}
+.style4 {
+	font-size: 18pt;
+	color: #000000;
+	text-indent: 0em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+	text-align: right;
+}
+.style5 {
+	font-size: 18pt;
+	color: #FFFFFF;
+	text-indent: 0em;
+	padding-left: 16em;
+	padding-right: 16em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+}
+</style>
+</head>
+
+<body style="background:#232323 url('../../images/bg00.jpg') no-repeat; color: #232323; background-position: bottom center; background-attachment: fixed; background-size: cover; cursor: url('../../images/tex_cursor_mouse_shadow.png'), default">
+
+<div class="style1">
+<br>
+<p><strong>工作台</strong></p>
+</div>
+<div class="style3">
+<hr>
+</div>
+<div class="style2">
+<p>相较于前作，该作新增了武器改造系统，绝大多数武器都可在关卡场景中的工作台上进行改造。</p>
+</div>
+<center><IMG SRC="../../images/workbench.jpg"></center>
+<div class="style2">
+<p>游戏中大多数武器都有的改造选项可供选择，花费指定数量的金币即可解锁，如加装瞄准镜、安装加长弹仓等。</p>
+<p>执行过的改造可以在工作台解除。</p>
+</div>
+<center><IMG SRC="../../images/workbench_rifle.jpg"></center>
+<div class="style2">
+<br>
+<p>此外，工作台上还可以使用修理点数，恢复武器的耐久值。</p>
+<p>修理点数通常会在击毁炮台类敌人时掉落，收集上限为200。</p>
+</div>
+<div class="style3"><hr></div>
+<div class="style4">
+<a id="label1"; color="#000000"; class="style4">◆</a><a style="cursor: url('../../images/tex_cursor_mouse_shadow.png'), default;" color="#FFFFFF"; target="VIEW"; href="../welcome.htm"; onmouseover="javascript:mPlay(&#39;ui_select&#39;); Text_MouseOver(&#39;label1&#39;); Text_MouseOver(&#39;label2&#39;)"  onclick="javascript:mPlay(&#39;ui_ok&#39;);" onmouseout="Text_MouseOut(&#39;label1&#39;); Text_MouseOut(&#39;label2&#39;)">返回</a><a id="label2"; color="#000000"; class="style4">◆</a>&emsp;&emsp;
+<p>&nbsp;&nbsp;</p>
+</div>
+</body>
+</html>
+
+<script src="../buzz.js"; type="text/javascript"></script>
+<script type="text/javascript">
+function mPlay(s){
+	if (!buzz.isSupported()) {
+		$('body').append('<embed src="../../audio/' + s + '.ogg" autostart="true" hidden="true" loop="false">');
+	} else {
+		var snd = new buzz.sound("../../audio/" + s, {formats: [ "ogg" ]});
+		snd.play();
+	}
+}
+
+function Text_MouseOver(thelabel) {
+	document.getElementById(thelabel).style.color = "#FFFFFF";
+}
+
+function Text_MouseOut(thelabel) {
+	document.getElementById(thelabel).style.color = "#000000";
+}
+</script>

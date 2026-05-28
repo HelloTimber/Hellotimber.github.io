@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>巨大要塞 世界观</title>
+<style type="text/css">
+.style1 {
+	text-align: center;
+	font-size: 32pt;
+	color: #FFFFFF;
+}
+.style2 {
+	font-size: 18pt;
+	text-align: left;
+	color: #FFFFFF;
+	text-indent: 2em;
+	padding-left: 3em;
+	padding-right: 3em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+}
+.style3 {
+	text-align: left;
+	font-size: 24pt;
+	text-indent: 2em;
+	padding-left: 2em;
+	padding-right: 2em;
+	color: #FFFFFF;
+	text-indent: 0em;
+}
+.style4 {
+	font-size: 18pt;
+	color: #000000;
+	text-indent: 0em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+	text-align: right;
+}
+.style5 {
+	font-size: 18pt;
+	text-align: right;
+	color: #FFFFFF;
+	text-indent: 2em;
+	padding-left: 2em;
+	padding-right: 2em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+}
+</style>
+</head>
+
+<body style="background:#000000 no-repeat; color: #000000; background-position: bottom center; background-attachment: fixed; background-size: cover; cursor: url('../images/tex_cursor_mouse_shadow.png'), default">
+<center><IMG SRC="../images/lore_chs_alpha.png" style="max-width: 100%; height: auto; display: block;"></center>
+</body>
+</html>
+
+<script src="./buzz.js"; type="text/javascript"></script>
+<script type="text/javascript">
+function mPlay(s){
+	if (!buzz.isSupported()) {
+		$('body').append('<embed src="../audio/' + s + '.ogg" autostart="true" hidden="true" loop="false">');
+	} else {
+		var snd = new buzz.sound("../audio/" + s, {formats: [ "ogg" ]});
+		snd.play();
+	}
+}
+
+function Text_MouseOver(thelabel) {
+	document.getElementById(thelabel).style.color = "#FFFFFF";
+}
+
+function Text_MouseOut(thelabel) {
+	document.getElementById(thelabel).style.color = "#000000";
+}
+</script>

@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>附加内容</title>
+<style type="text/css">
+.style1 {
+	text-align: center;
+	font-size: 32pt;
+	color: #FFFFFF;
+}
+.style2 {
+	font-size: 18pt;
+	text-align: left;
+	color: #FFFFFF;
+	text-indent: 2em;
+	padding-left: 3em;
+	padding-right: 3em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+}
+.style3 {
+	text-align: left;
+	font-size: 24pt;
+	text-indent: 2em;
+	padding-left: 2em;
+	padding-right: 2em;
+	color: #FFFFFF;
+	text-indent: 0em;
+}
+.style4 {
+	font-size: 18pt;
+	color: #000000;
+	text-indent: 0em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+	text-align: right;
+}
+.style5 {
+	font-size: 18pt;
+	color: #000000;
+	text-indent: 0em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+	text-align: center;
+}
+</style>
+</head>
+
+<body style="background:#232323 url('../images/bg00.jpg') no-repeat; color: #232323; background-position: bottom center; background-attachment: fixed; background-size: cover; cursor: url('../images/tex_cursor_mouse_shadow.png'), default">
+
+<div class="style1">
+<br>
+<p><strong>附加内容</strong></p>
+</div>
+<div class="style3"><hr></div>
+<div class="style2">
+<p>在“幕间”关卡中，走到关卡起点可以移动至“要塞之外”。</p>
+<p>许多玩家直到游戏全流程通关后，在圣殿中无目的乱逛时，才发现还有一个名叫“要塞之外”的关卡。</p>
+<p>在要塞之外，有一家客栈。</p>
+<p>您可以坐下来，点一份茶点，与客栈的老板娘闲谈。</p>
+<p>客栈的老板娘可以向您提供目前为止遇到过的所有敌人的情报，还能使用“代币”调整敌人的属性。</p>
+<p>例如：</p>
+</div>
+<div class="style3"><p><strong>突击兵 - 渗透员 / 蛙人 -</strong></p></div>
+<div class="style2">
+<i><p>突击兵是以侦察任务为主的斥候单位，具备极强的侦察意识和渗透能力，属于非常关键的作战力量。</p>
+<p>但那是以前的事情了。自从被启蒙波洗脑，曾经的能力也成为无稽之谈了。</p></i>
+<p style="color: #232323">不试试看点击一下吗？</p>
+
+
+<CENTER><img  id="pic0"; src="../images/bonus_commando/tex_enemy_commando_idle.png"; onclick="jumpToImage()";></CENTER>
+<CENTER><img  id="pic1" src="../images/bonus_commando/commando_01.png"; onclick="jumpToImage()"; style="display: none;"></CENTER>
+<CENTER><img  id="pic2" src="../images/bonus_commando/commando_02.png"; onclick="jumpToImage()"; style="display: none;"></CENTER>
+<CENTER><img  id="pic3" src="../images/bonus_commando/commando_03.png"; onclick="jumpToImage()"; style="display: none;"></CENTER>
+<CENTER><img  id="pic4" src="../images/bonus_commando/commando_04.png"; onclick="jumpToImage()"; style="display: none;"></CENTER>
+<CENTER><img  id="pic5" src="../images/bonus_commando/commando_05.png"; onclick="jumpToImage()"; style="display: none;"></CENTER>
+<CENTER><img  id="pic6" src="../images/bonus_commando/commando_06.png"; onclick="jumpToImage()"; style="display: none;"></CENTER>
+<CENTER><img  id="pic7" src="../images/bonus_commando/commando_07.png"; onclick="jumpToImage()"; style="display: none;"></CENTER>
+<CENTER><img  id="pic8" src="../images/bonus_commando/commando_08.png"; onclick="jumpToImage()"; style="display: none;"></CENTER>
+ <hr>
+</div>
+<div class="style4">
+<a id="label1"; color="#000000"; class="style4">◆</a><a style="cursor: url('../images/tex_cursor_mouse_shadow.png'), default;" color="#FFFFFF"; target="VIEW"; href="welcome.htm"; onmouseover="javascript:mPlay(&#39;ui_select&#39;); Text_MouseOver(&#39;label1&#39;); Text_MouseOver(&#39;label2&#39;)"  onclick="javascript:mPlay(&#39;ui_ok&#39;);" onmouseout="Text_MouseOut(&#39;label1&#39;); Text_MouseOut(&#39;label2&#39;)">返回</a><a id="label2"; color="#000000"; class="style4">◆</a>&emsp;&emsp;
+<p>&nbsp;&nbsp;</p>
+
+<script src="../pages/buzz.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+function mPlay(s){
+	if (!buzz.isSupported()) {
+		$('body').append('<embed src="../audio/' + s + '.ogg" autostart="true" hidden="true" loop="false">');
+	} else {
+		//buzz.all().stop();
+		var snd = new buzz.sound("../audio/" + s, {formats: [ "ogg" ]});
+		snd.play();
+	}
+}
+</script>
+
+<script>
+    function jumpToImage()
+	{
+        var pic0 = document.getElementById("pic0");
+        var pic1 = document.getElementById("pic1");
+        var pic2 = document.getElementById("pic2");
+		var pic3 = document.getElementById("pic3");
+        var pic4 = document.getElementById("pic4");
+		var pic5 = document.getElementById("pic5");
+		var pic6 = document.getElementById("pic6");
+		var pic7 = document.getElementById("pic7");
+		var pic8 = document.getElementById("pic8");
+        if (pic0.style.display != "none")
+		{
+            pic0.style.display = "none";
+            pic1.style.display = "inline";
+			mPlay("bonus_audio/falldown_2");
+			mPlay("bonus_audio/voice_death_32");
+        }
+        else if (pic1.style.display != "none")
+		{
+			buzz.all().stop();
+            pic1.style.display = "none";
+            pic2.style.display = "inline";
+			mPlay("bonus_audio/wearing");
+			mPlay("bonus_audio/voice_death_34");
+        }
+		else if(pic2.style.display == "inline")
+		{
+			buzz.all().stop();
+            pic2.style.display = "none";
+			pic3.style.display = "inline";
+			mPlay("bonus_audio/Lose_Limb");
+			mPlay("bonus_audio/voice_death_himei_kyaaaaaaaa");
+        }
+		else if(pic3.style.display == "inline")
+		{
+			buzz.all().stop();
+			pic3.style.display = "none";
+			pic4.style.display = "inline";
+			mPlay("bonus_audio/Normal_Gore_sound");
+			mPlay("bonus_audio/voice_death_22");
+        }
+		else if(pic4.style.display == "inline")
+		{
+			buzz.all().stop();
+			pic4.style.display = "none";
+			pic5.style.display = "inline";
+			mPlay("bonus_audio/hit_sound");
+			mPlay("bonus_audio/voice_death_20");
+        }
+		else if(pic5.style.display == "inline")
+		{
+			buzz.all().stop();
+			pic5.style.display = "none";
+			pic6.style.display = "inline";
+			mPlay("bonus_audio/Explosive_Gore_Sound");
+			mPlay("bonus_audio/voice_death_17");
+        }
+		else if(pic6.style.display == "inline")
+		{
+			buzz.all().stop();
+			pic6.style.display = "none";
+			pic7.style.display = "inline";
+			mPlay("bonus_audio/Lose_Limb");
+        }
+		else if(pic7.style.display == "inline")
+		{
+			buzz.all().stop();
+			pic7.style.display = "none";
+			pic8.style.display = "inline";
+			mPlay("bonus_audio/Lose_Limb");
+        }
+		//else if(pic8.style.display == "inline")
+		//{
+        //    pic0.style.display = "inline";
+		//	pic8.style.display = "none";
+        //}
+    }
+function Text_MouseOver(thelabel) {
+	document.getElementById(thelabel).style.color = "#FFFFFF";
+}
+
+function Text_MouseOut(thelabel) {
+	document.getElementById(thelabel).style.color = "#000000";
+}
+</script>
+
+</body>
+
+</html>
+
+

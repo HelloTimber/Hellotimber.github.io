@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>补给物资</title>
+<style type="text/css">
+.style1 {
+	text-align: center;
+	font-size: 32pt;
+	color: #FFFFFF;
+}
+.style2 {
+	font-size: 18pt;
+	text-align: left;
+	color: #FFFFFF;
+	text-indent: 2em;
+	padding-left: 3em;
+	padding-right: 3em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+}
+.style3 {
+	text-align: left;
+	font-size: 24pt;
+	text-indent: 2em;
+	padding-left: 2em;
+	padding-right: 2em;
+	color: #FFFFFF;
+	text-indent: 0em;
+}
+.style4 {
+	font-size: 18pt;
+	color: #000000;
+	text-indent: 0em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+	text-align: right;
+}
+.style5 {
+	font-size: 18pt;
+	color: #FFFFFF;
+	text-indent: 0em;
+	padding-left: 16em;
+	padding-right: 16em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+}
+</style>
+</head>
+
+<body style="background:#232323 url('../../images/bg00.jpg') no-repeat; color: #232323; background-position: bottom center; background-attachment: fixed; background-size: cover; cursor: url('../../images/tex_cursor_mouse_shadow.png'), default">
+
+<div class="style1">
+<br>
+<p><strong>补给物资</strong></p>
+</div>
+<div class="style3">
+<hr>
+</div>
+<div class="style2">
+<i><p>因为我们自己的存货也总是不够，</p>
+<p>在出售的同时，我们也收购多余的补给物资。</p>
+<p>如果您有多余的补给物资的话，就请卖给我们吧。</p></i>
+<table border="1" align="center" cellpadding="10">
+<thead>
+<tr>
+<th style="text-align: center;">补给物资</th>
+<th style="text-align: center;">效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img  id="supply01"; src="../../images/tex_item_supply_medkit_box.png"; onclick="javascript:mPlay(&#39;bloodbag_sound&#39;);">&emsp;血袋</td>
+<td>使用血袋能够补充损失的血液，但同时也会引起饥饿和中毒症状。</td>
+</tr>
+<tr>
+<td><img  id="supply02"; src="../../images/tex_item_supply_o2canister_box.png"; onclick="javascript:mPlay(&#39;energy_canister_sound&#39;);">&emsp;氧气罐</td>
+<td>氧气罐可以帮助殉教者快速恢复体力，并且可以消除输血导致的中毒症状。</td>
+</tr>
+<tr>
+<td><img  id="supply03"; src="../../images/tex_item_supply_food_box.png"; onclick="javascript:mPlay(&#39;eat_food_sound&#39;);">&emsp;便携食物</td>
+<td>便携食物可以为殉教者充饥，恢复生命值与体力的上限。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="style3"><hr></div>
+<div class="style4">
+<a id="label1"; color="#000000"; class="style4">◆</a><a style="cursor: url('../../images/tex_cursor_mouse_shadow.png'), default;" color="#FFFFFF"; target="VIEW"; href="../welcome.htm"; onmouseover="javascript:mPlay(&#39;ui_select&#39;); Text_MouseOver(&#39;label1&#39;); Text_MouseOver(&#39;label2&#39;)"  onclick="javascript:mPlay(&#39;ui_ok&#39;);" onmouseout="Text_MouseOut(&#39;label1&#39;); Text_MouseOut(&#39;label2&#39;)">返回</a><a id="label2"; color="#000000"; class="style4">◆</a>&emsp;&emsp;
+<p>&nbsp;&nbsp;</p>
+</div>
+</body>
+</html>
+
+<script src="../buzz.js"; type="text/javascript"></script>
+<script type="text/javascript">
+function mPlay(s){
+	if (!buzz.isSupported()) {
+		$('body').append('<embed src="../../audio/' + s + '.ogg" autostart="true" hidden="true" loop="false">');
+	} else {
+		buzz.all().stop();
+		var snd = new buzz.sound("../../audio/" + s, {formats: [ "ogg" ]});
+		snd.play();
+	}
+}
+
+function Text_MouseOver(thelabel) {
+	document.getElementById(thelabel).style.color = "#FFFFFF";
+}
+
+function Text_MouseOut(thelabel) {
+	document.getElementById(thelabel).style.color = "#000000";
+}
+</script>

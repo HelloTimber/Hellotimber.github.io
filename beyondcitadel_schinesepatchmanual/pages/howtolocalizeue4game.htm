@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>UE4游戏汉化方法参考</title>
+<style type="text/css">
+.style1 {
+	text-align: center;
+	font-size: 32pt;
+	color: #FFFFFF;
+}
+.style2 {
+	font-size: 12pt;
+	text-align: left;
+	color: #FFFFFF;
+	text-indent: 2em;
+	padding-left: 4em;
+	padding-right: 4em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+}
+.style3 {
+	text-align: left;
+	font-size: 24pt;
+	text-indent: 2em;
+	padding-left: 2em;
+	padding-right: 2em;
+	color: #FFFFFF;
+	text-indent: 0em;
+}
+.style4 {
+	font-size: 18pt;
+	color: #000000;
+	text-indent: 0em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+	text-align: right;
+}
+.style5 {
+	font-size: 18pt;
+	text-align: right;
+	color: #FFFFFF;
+	text-indent: 2em;
+	padding-left: 2em;
+	padding-right: 2em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+}
+</style>
+</head>
+
+<body style="background:#232323 url('../images/bg00.jpg') no-repeat; color: #232323; background-position: bottom center; background-attachment: fixed; background-size: cover; cursor: url('../images/tex_cursor_mouse_shadow.png'), default">
+
+<div class="style1">
+<br>
+<p><strong>UE4游戏汉化方法参考</strong></p>
+</div>
+<div class="style3"><hr></div>
+<div class="style2"><p>此处感谢 逗逗米玩啊 ，我的经验很大一部分是参考了这位发布的一系列讲解视频：<a id="label7"; color="#000000"; class="style4">◆</a><a style="cursor: url('../images/tex_cursor_mouse_shadow.png'), default;" color="#FFFFFF"; target="_blank"; href="https://www.bilibili.com/video/BV1PF411p7G4"; onmouseover="javascript:mPlay(&#39;ui_select&#39;); Text_MouseOver(&#39;label7&#39;); Text_MouseOver(&#39;label8&#39;)"  onclick="javascript:mPlay(&#39;ui_ok&#39;);" onmouseout="Text_MouseOut(&#39;label7&#39;); Text_MouseOut(&#39;label8&#39;)">《UE4游戏汉化简单教程--抛砖引玉》</a><a id="label8"; color="#000000"; class="style4">◆</a>&emsp;&emsp;</div>
+<div class="style3"><p>汉化UE4游戏（以Beyond Citadel为例），如何汉化文本：</p></div>
+<div class="style2">
+<p>1、用UEExtractor工具，直接把整个UE游戏目录拖到UEExtractor.exe上，工具就会自动逐个扫描文件（主要是.pak中的资源），并将检索到的文本内容整理好，生成包含所有可汉化文本的.csv文件。一列类似于文本地址的key，一列对应原文本，一列汉化后的文本。在用Excel翻译好其中的内容后，先将.csv文件用文本工具打开（如记事本），确保其编码格式为UTF-8，若不是的话就左上角另存为，编码格式选择UTF-8并保存，不然文本会乱码；然后把.csv文件拖到UEExtractor.exe上，会生成可用作游戏汉化补丁中的文本内容的.locres文件。</p>
+<p>需要注意区分，UEExtractor和另一种常见文本提取工具UE4localizationsTool的规范不同。导出时，UEExtractor导出的key格式开头带“/”，导入时须先手动删除，而UE4localizationsTool导出时就没有；导入时，UEExtractor换行需额外替换为换行符为“< cf >”（中间的空格都去掉），不替换不会导致文本错乱，但大部分文本会因错误而不被翻译，而UE4localizationsTool中不以“< cf >”（中间的空格都去掉）作为换行符的话会直接导致从有换行符起的所有文本全部错乱。</p>
+<p>记得csv里面source列的文本不要改动，似乎是有改动之后跟游戏原文本对不上，翻译出来就不会生效了。一定要保持source列的文本跟原来一致。有些文本可能开头和末尾有空格和多余的换行符，也要注意不要不小心吞掉了！</p>
+<p>有些source文本中带有英文的半角双引号，有一定概率会导致翻译无效，需要编辑文本所在的.uasset文件，将其中的引号符号（\"）替换成其它不影响的字符如（!）后（总字符数不要发生变化），再在csv里面把source文本里的引号也改成修改后的符号。</p>
+<p>.locres文件路径的安装位置及文件名称应为“beyond_citadel\Content\Localization\Game\en\game.locres”。</p>
+<br>
+<p>2、用repak工具打包。可以使用umodel、fmodel等工具查看游戏原.pak文件中的路径格式和其中资源，了解其中路径格式后，按照正确路径将需打包的文件整理好。</p>
+<p>在开始菜单中打开powershell或cmd。用cd指令跳转到当前目录，如：“cd E:\repak”，然后：</p>
+<p>如果要打包整个目录，则输入“./repak pack -v --version=V9 --compression Zlib beyond_citadel-WindowsNoEditor_schinese_patch”，随后会在当前目录下生成“beyond_citadel-WindowsNoEditor_schinese_patch.pak”。</p>
+<p>若要解压pak，则输入：“./repak unpack -v --version=V9 beyond_citadel-WindowsNoEditor.pak”。</p>
+<br>
+<p>3、打包好的.pak文件放入“Beyond Citadel\beyond_citadel\Content\Paks”目录下即可（不用替换原.pak文件，并列即可），启动游戏即生效。</p>
+<hr>
+</div>
+<div class="style3">
+<p>如何汉化替换UE4游戏中的贴图资源：</p>
+</div>
+<div class="style2">
+<p>1、用umodel工具打开.pak文件，在其中找到需要的贴图文件，导出为.png图像文件。</p>
+<p>2、用fmodel工具打开.pak文件，在其中找到需要的贴图文件，按原格式导出.uasset文件。（umodel能不能不转换为图像而直接导出来？能的话就不用这个工具了）</p>
+<p>3、图像用PS等工具汉化好之后，保存.png图像，用UE4DDS工具把.png文件注入到.uasset文件中并生成新的.uasset、.ubulk、.uexp文件。（这个工具是不是也能直接把.uasset转换成图片？）</p>
+<p>4、跟上面汉化文本一样，放到对应正确路径一起打包就行。</p>
+<hr>
+</div>
+<div class="style3">
+<p>游戏字体方面：</p>
+</div>
+<div class="style2">
+<p>若游戏中缺字体，则在游戏中缺失的字符就会不显示直接被吞掉，如“八百标兵奔北坡”变成像是“兵北坡”这种。需要给游戏使用的字体补充所需字符。</p>
+<p>1、在.pak中导出字体文件，虽然一般规范的话都会专门归在一个字体目录下的，但也可能会有作者乱放文件的情况，所以不管什么位置都找一遍，后缀名都是.ufont，很好找。</p>
+<p>2、fmodel导出.ufont字体文件，不用转换处理，直接把.ufont后缀改成.ttf就行，就是普通的字体文件。</p>
+<p>3、如果行的话，直接把要用的.ttf字体文件（必须要.ttf，像.otf什么的不行）改后缀成.ufont然后打包就行了。</p>
+<p>4、如果需要调整字体文件，就要用到fontcreator工具，比如调整字体大小、宽瘦、位置等让字符在游戏中以合适的排版显示，替换部分字体字符，把.otf转换为.ttf导出，以及删除字体文件中大量多余的不必要字符以减小汉化补丁的字体体积等。</p>
+<hr>
+</div>
+<div class="style3">
+<p>硬编码文本：</p>
+</div>
+<div class="style2">
+<p>关于某些文本在UEExtractor导出的.locres文件中不存在，实际上是被硬编码在游戏中的文本，应当如何汉化？</p>
+<p>1、使用010 Editor工具，在从游戏的.pak文件导出的资源目录下，使用“在文件中搜索”功能，以文本形式搜索需要查找的指定文本；该工具会在HEX中查找到文件中包含的指定文本（大致是这个样子），并把包含文本的文件路径列出来，且会高亮文件中的文本位置。</p>
+<br>
+<p>2、找到包含所需文本的.uasset文件后，使用UAssetGUI工具打开该.uasset文件。另存为.uasset格式一下，工具会附带生成一份.uexp文件；另存为.json一下，然后用文本编辑工具打开.json文件，找到需汉化的文本并将替换为翻译后的文本，且将其上方type行中的EX_StringConst参数替换为EX_UnicodeStringConst。（非常建议使用Beyond Compare工具，可用一个原版文本文件作为参考，并新创建一个用于修改的文本文件，然后用该工具同时打开并比较两版本文本文件的不同处，不一致的位置会高亮行显示，比较新旧内容非常方便）</p>
+<br>
+<p>3、.json编辑好后保存，然后用UAssetGUI工具再次打开该.json文件，保存为.uasset文件（直接Ctrl+S就行）。</p>
+<br>
+<p>4、使用kismet-analyze工具（需预先再电脑上安装graphviz，必须安装，压缩包便携版不可行），在其.exe文件目录下创建一个.bat文件，内容例为：</p>
+<p>.\kismet-analyzer gen-cfg-tree （包含需检查的.uasset文件目录：）"E:\UAssetGUI" （导出.html检查结果的目录：）"E:\UAssetGUI\tree" （不清楚，没搞明白，反正就这样写了：）"E:\UAssetGUI\tree\tree.html"</p>
+<p>这是一个生成树状图的工具，导出.html文件后里面会包含.uasset运行程序的流程树状图。理想的情况下，正常的程序节点显示为矩形，出错的各个节点会显示为椭圆形且后方断连，椭圆中包含需要被调整的offset位移数字。若生成的树状图太大，操作卡顿难以移动浏览，可以直接利用浏览器的查找功能搜索"addr"关键词，出错节点应该都是有这个关键词的。</p>
+<br>
+<p>5、根据被替换的原文本和汉化后文本的字符数差别（原来英文字符都只占1个字符位，而中文文本需将参数调整为Unicode类型，于是调整后该类型下任何字符都固定占2个字符位，包括任何汉字、英文字符、数字字符、空格字符、标点字符等），在被UAssetGUI处理后的.json文件中批量替换出错节点上显示的数字（注意，一定要勾选全文匹配选项替换，以防误替换掉其他包含这部分数字的数据，比如替换123为124可能会把不相关的1234替换为1244）。</p>
+<p>关于如何替换数字：例如该文件中替换了两行英文文本，第一行是“FRAGMENT OF PRIDE ACQUIRED”替换为“获得  傲慢之碎片”，第二行是“FRAGMENT OF ENVY ACQUIRED”替换为“获得  嫉妒之碎片”，第三行……，则第一行原字符数为26而新字符数为16，第二行原字符数为25而新字符数为16，第三行原字符数为25而新字符数为17。</p>
+<p>假如打算把所有位移都一次性调整到位（不建议，除非在json中看见这些文本下方的codeoffset都为同一个数值，且多个文本之间在json中存在上下顺序便于调平字符数，不然还是一个一个来。有些文本即便codeoffset相同，修改后也会发现不是同一类文本，是两串独立的代码链，配平无效），例如某个椭圆中的数字是500，则应当在.json中应当替换所有500数值为：500-(26-16-1)-(25-16-1)-(25-17-1)=476。记得注意树状图上的连线结构，有时候存在多个节点存在同一个数值的情况，有的节点正常有的节点出错，要仔细地找到连线的上一正常节点的Path，确保只替换了正确节点的codeoffset数值，替换完后保存.json文件，重复第3、4、5部分的步骤。</p>
+<br>
+<p>6、经过上面步骤处理过后，根据新的.json生成的.html树状图中，原出错椭圆节点应该会消失，并且新出现一些上次没有的出错节点，数字内容不同，按照上述步骤同样处理即可，直到多次以后不再出现出错的椭圆节点为止，这个过程可能很漫长，有可能会需要持续调整很多次；</p>
+<p>有些时候，替换数值后的节点不会消失，比如500调整为476后，新.html树状图中存在数值为476的椭圆节点，则表示该数值并非正确数值，须重新将其调整为正确数值，正确数值可能要靠穷举法从前往后一段一段试过来，如先500-(26-16-1)=491，保存生成一次树状图后491还是错的，再试500-(26-16-1)-(25-16-1)=483，如此。要是实在试不出来的话（比如量实在是太大），那就还是老老实实一个一个改，或者同codeoffset数值的两个文本配平变化字符数一对一对改，毕竟配平的话可能一次只存在十几个出错节点，没配平的话影响到后续和全局节点状态可能会出现百来个出错节点，改一个词就得花一整天时间调json了。</p>
+<p>然后有时候可能一个出错节点改好后，会发现该节点后面其实还有很长很长一串节点要改，每次改一下编译一次查一下，然后再改一下编译一次查一下，太费时间精力了，有个轻松点效率高些的办法，就是去用原.uasset导出一份树状节点图，根据节点图上面的（一长串英文 @ 数字）搜索，数字可能会因为字符修改而上下略微浮动，查到对应节点后再原树状图上看后面连下去的所有节点，根据算好的字符变化量一次性改好所有相关数值。</p>
+<br>
+<p>7、待.html树状图中无椭圆出错节点后，该UAssetGUI处理出来的.uasset和.uexp文件即可使用，将其放入需打包目录下的正确路径位置，用repak打包成.pak文件并放入“Beyond Citadel\beyond_citadel\Content\Paks”目录下，启动游戏即生效。若树状图中存在出错节点，则游戏运行中引用到存在出错节点的位置时游戏就会崩溃。</p>
+<p>注意有些.uasset可能在字符修改后，相关节点受到影响，即便codeoffset数值没有改对，也不会显示出错节点，只是按照原树状图的节点线路，向下连接到一半之后就消失了。这种情况要尤其注意，这种不报错的节点没有改对的话，放进游戏里虽然不会引起崩溃，但很有可能会导致节点链上的相关文本因为没有被执行到而不显示，或者相关事件没有被执行到而无效（比如地上的苹果、电池等物品触碰无效无法拾取）。</p>
+<br>
+<p>注：在修改硬编码文本的时候，在一些内容比较大的uasset文件中（几万行几十万行那种），非常不建议大批量修改文本，最好是一个文本一个文本，或是一对文本一对文本（像是一个文本比原文本多1个字符，而另一个比原文本少1个字符，以此配平CodeOffset；并根据修改文本旁边的CodeOffset数值，挑选一致的CodeOffset分支）修改。因为在修改文本的时候，一方面是结构分支错综复杂，无法判断在各个分支节点应该调整多少CodeOffset（比如1+2+3，有的分支可能只要调整1，有的要2，有的要3，有的要4有的要5有的要6），而且就算配平后也无法保证中间会有哪个迷惑性的文本导致出现一大长串节点几十个codeoffset全部要被改变的情况。</p>
+<p>并且考虑到配平，先把字符加得大的解决掉。</p>
+</div>
+<div class="style4">
+<a id="label3"; color="#000000"; class="style4">◆</a><a id="label6" style="cursor: url('../images/tex_cursor_mouse_shadow.png'), default; color: #FFFFFF;" color="#FFFFFF"; onmouseover="javascript:mPlay(&#39;ui_select&#39;); Text_MouseOver(&#39;label3&#39;); Text_MouseOver(&#39;label4&#39;)"  onclick="javascript:SwitchDisplay('label5'); javascript:mPlay(&#39;ui_ok&#39;);" onmouseout="Text_MouseOut(&#39;label3&#39;); Text_MouseOut(&#39;label4&#39;)">一些碎碎念</a><a id="label4"; color="#000000"; class="style4">◆</a>&emsp;&emsp;
+</div>
+<div class="style2">
+<a id="label5"; style="display: none;">
+	<div class="style5"><hr></div>
+	<p>我把自己摸索到的UE4汉化经验放在这里了，需要的工具、操作也写在这里了。有制作汉化的想法的网友们，这部分可以供大家参考，希望能有所帮助。</p>
+	<p>希望实在的汉化能够多一些，网友们喜闻乐见的好作品能够更易消化一些。</p>
+	<p>最近见到过不少依靠机翻，并且没做完就急于发布，然后四处宣扬的滥竽充数的所谓汉化，实际效果一言难尽。</p>
+	<p>我明白的。有些人是求利。或许通过某些旁门左道，的确能够得到些实实在在的利。但得说，君子爱财，取之有道。</p>
+	<p>有些是求名。真正的声誉，是靠实在的水平和质量博来的。且不说滥竽充数、哗众取宠得来的是什么名，试问大家体验过多少优秀的本地化成果，其中甚至不少令人拍手叫好、拍案称奇的翻译，那许多在玩家、读者心中留下了深刻印象的好句，有多少译者是能在多年以后仍被大家牢牢记住的？</p>
+	<p>所谓名声，皆浮云尔。</p>
+	<p>名字会顺着时间的江流沉入忘却的大海，唯有触动心灵的作品会在心中烙下难以磨灭的印记。</p>
+	<p>我们都只是为创作成果而碌碌劳动的工匠，唯有所成结晶恒久流传。</p>
+	<p>其实，也不需要记住我们。人生的洗礼会使我们面目全非，时间和寿命终会让我们烟消云散；当后来的人们，他们触摸我们的结晶，那时，我们可以在心中自豪地告诉他们，看，那就是我！</p>
+	<p>我们走过荒芜的土地，在上面踏出了道路；当人们沿着路走向远方，那条路就是我。我们走过炙热的大地，在路旁栽下了大树；当人们在树下乘凉休息，那棵树就是我。</p>
+	<br>
+	<p>我还是多么希望我的文笔能够再好一点啊，多么希望我的能力再高一点啊。</p>
+	<p>多么希望我能多一些时间、多一些精力，去多提高一些能力，从而在自己感兴趣的领域多创造一些价值。</p>
+	<p>劳动最光荣。</p>
+</a>
+</div>
+<div class="style2"><hr></div>
+<div class="style5">
+<p>哈喽，木头？（HelloTimber）</p>
+<p>2026年04月30日</p>
+</div>
+<div class="style4">
+<a id="label1"; color="#000000"; class="style4">◆</a><a style="cursor: url('../images/tex_cursor_mouse_shadow.png'), default;" color="#FFFFFF"; target="VIEW"; href="page01.htm"; onmouseover="javascript:mPlay(&#39;ui_select&#39;); Text_MouseOver(&#39;label1&#39;); Text_MouseOver(&#39;label2&#39;)"  onclick="javascript:mPlay(&#39;ui_ok&#39;);" onmouseout="Text_MouseOut(&#39;label1&#39;); Text_MouseOut(&#39;label2&#39;)">返回</a><a id="label2"; color="#000000"; class="style4">◆</a>&emsp;&emsp;
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>
+
+<script src="./buzz.js"; type="text/javascript"></script>
+<script type="text/javascript">
+function mPlay(s){
+	if (!buzz.isSupported()) {
+		$('body').append('<embed src="../audio/' + s + '.ogg" autostart="true" hidden="true" loop="false">');
+	} else {
+		var snd = new buzz.sound("../audio/" + s, {formats: [ "ogg" ]});
+		snd.play();
+	}
+}
+
+function Text_MouseOver(thelabel) {
+	document.getElementById(thelabel).style.color = "#FFFFFF";
+}
+
+function Text_MouseOut(thelabel) {
+	document.getElementById(thelabel).style.color = "#000000";
+}
+
+function SwitchDisplay(thelabel){
+	if (document.getElementById(thelabel).style.display == "none")
+	{
+		document.getElementById(thelabel).style.display = "inline";
+	}
+	else
+	{
+		document.getElementById(thelabel).style.display = "none";
+	}
+}
+
+function zhankaizhedie(){
+	if (document.getElementById("label6").innerText == "展开")
+	{
+		document.getElementById("label6").innerText = "折叠";
+	}
+	else
+	{
+		document.getElementById("label6").innerText = "展开";
+	}
+}
+</script>
