@@ -1,0 +1,41 @@
+﻿<HTML>
+<HEAD>
+<script src="./buzz.js" type="text/javascript"></script>
+<script language="JavaScript">
+//function myrefresh()
+//{
+//       window.location.reload();
+//}
+//指定60秒(60000ms)刷新一次
+//setTimeout('myrefresh()',60000);
+
+//打开页面8秒后自动播放背景音乐，且100秒放完后循环播放：
+setTimeout("playbgm()",8000);
+function playbgm()
+{
+	javascript:mPlay("I_have_always_loved_you")
+	setTimeout("playbgm()",100000);
+}
+function mPlay(s){
+	if (!buzz.isSupported()) {
+		$('body').append('<embed src="../audio/' + s + '.ogg" autostart="true" hidden="true" loop="false">');
+	} else {
+		var snd = new buzz.sound("../audio/" + s, {formats: [ "ogg" ]});
+		snd.play();
+	}
+}
+</script>
+
+<style type="text/css">
+.custom-cursor {
+    cursor: url("../images/tex_cursor_mouse_shadow.png"), pointer;
+}
+</style>
+
+<TITLE>Ditch</TITLE>
+</HEAD>
+
+<BODY TEXT=002963 LINK=D56F00 VLINK=D56F00 ALINK=D56F88
+  STYLE="background-repeat:repeat-y;background-image:url('../images/ditch_1.png'); background-color: #000000; background-size‌:contain;  background-position: top; cursor: url(../images/tex_cursor_mouse_shadow.png), default">
+</BODY>
+</HTML>

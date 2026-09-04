@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Enemies</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body style="background:#000000 url('../images/fanbook/tex_terminal_logo_clean_a30.jpg') no-repeat; color: #000000; background-position: top center; background-attachment: fixed; background-size: auto; cursor: url('../images/tex_cursor_mouse_shadow.png'), default">
+<a id="pageheader_a">pageheader_a</a>
+<div class="Title1">
+<br>
+<br>
+<p><strong>Enemies</strong></p>
+<br>
+<br>
+<br>
+</div>
+<hr>
+<a id="pageheader_b">pageheader_b</a>
+</body>
+</html>
+
+<script type="text/javascript">
+function Text_MouseOver(thelabel) {
+	document.getElementById(thelabel).style.color = "#FFFFFF";
+}
+
+function Text_MouseOut(thelabel) {
+	document.getElementById(thelabel).style.color = "#000000";
+}
+
+fetch('pageheader_a.htm')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('pageheader_a').innerHTML = data;
+	document.getElementById('TextBox_JumpTo_').placeholder = getCurrentPageNumber();
+	document.getElementById('pageprefix_').innerText = window.location.pathname.split('/').pop().split('.')[0].split('_')[0];
+	const form_a = document.getElementById('TextBoxForm_');
+	form_a.addEventListener('submit', function(event) {
+		event.preventDefault(); 
+		const value = document.getElementById('TextBox_JumpTo_').value;
+		JumpToPage(value);
+		});
+  });
+  fetch('pageheader_b.htm')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('pageheader_b').innerHTML = data;
+	document.getElementById('TextBox_JumpTo').placeholder = getCurrentPageNumber();
+	document.getElementById('pageprefix').innerText = window.location.pathname.split('/').pop().split('.')[0].split('_')[0];
+	const form_a = document.getElementById('TextBoxForm');
+	form_a.addEventListener('submit', function(event) {
+		event.preventDefault(); 
+		const value = document.getElementById('TextBox_JumpTo').value;
+		JumpToPage(value);
+		});
+	});
+
+function getCurrentPageNumber() {
+    try {
+        const path = window.location.pathname;
+		const PageNumber = window.location.pathname.split('/').pop().split('.')[0].split('_').pop();
+        return PageNumber || '0';
+    } catch (e) {
+        console.error("获取页面名称失败:", e);
+        return '';
+    }
+}
+
+function NextPage(i) {
+	console.log(window.location.pathname);
+	const PageNumber = window.location.pathname.split('/').pop().split('.')[0].split('_').pop();
+	var PageNum = Number(PageNumber);
+	console.log(PageNumber);
+	console.log(PageNum);
+	PageNum = PageNum+i;
+	var strPageNum = String(PageNum);
+	JumpToPage(strPageNum);
+}
+
+function JumpToPage(PageNum){
+	const PagePrefix = window.location.pathname.split('/').pop().split('.')[0].split('_')[0];
+	console.log(PageNum);
+	var TargetPage = PagePrefix+'_'+PageNum+'.htm';
+	console.log(TargetPage);
+	checkPageExists(TargetPage).then(exists => {
+		if (exists) {
+			parent.DITCH.mPlay('ui_ok');
+			window.location.href = TargetPage;
+		} else {
+			parent.DITCH.mPlay('ui_cancel');
+		}
+	});
+}
+
+async function checkPageExists(url) {
+    try {
+        const response = await fetch(url, { method: 'HEAD' });
+        // 200-299 之间的状态码都表示请求成功（页面存在）
+        return response.ok; 
+    } catch (error) {
+        // 网络错误、跨域拦截等情况会进入这里
+        console.error("检查页面失败:", error);
+        return false;
+    }
+}
+</script>

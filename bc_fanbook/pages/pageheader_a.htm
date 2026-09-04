@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="styles.css">
+</head>
+<body style="background:#000000 url('../images/fanbook/tex_terminal_logo_clean_a30.jpg') no-repeat; color: #000000; background-position: top center; background-size: auto; cursor: url('../images/tex_cursor_mouse_shadow.png'), default">
+<div class="Button_Right" style="padding-left: 0em; padding-right: 0em;">
+<a id="pageprefix_"; color="#000000"; class="Intro_Center" style= "padding-left: 0em; padding-right: 0em;">Page Prefix</a>
+<form id="TextBoxForm_"; style="display:inline; margin:0;">
+    <input type="text" id="TextBox_JumpTo_" placeholder="Page";  class="Intro_Center"; size="1"; style="padding-left: 0em; padding-right: 0em; background-color: #000000; color: #FFFFFF;">
+</form>
+<a id="label5_"; color="#000000"; class="Button_Right" style= "padding-left: 0em; padding-right: 0em;">◆</a><a class="Intro_Center" style="padding-left: 0em; padding-right: 0em; cursor: url('../images/tex_cursor_mouse_shadow.png'), default;" color="#FFFFFF"; target="VIEW"; onmouseover="parent.DITCH.mPlay(&#39;ui_select&#39;); Text_MouseOver(&#39;label5_&#39;); Text_MouseOver(&#39;label6_&#39;)"  onclick="javascript:JumpToPage(document.getElementById(&#39;TextBox_JumpTo_&#39;).value);" onmouseout="Text_MouseOut(&#39;label5_&#39;); Text_MouseOut(&#39;label6_&#39;)">GO</a><a id="label6_"; color="#000000"; class="Button_Right" style= "padding-left: 0em; padding-right: 0em;">◆</a>
+<a id="label1_"; color="#000000"; class="Button_Right" style= "padding-left: 0em; padding-right: 0em;">◆</a><a class="Intro_Center" style="padding-left: 0em; padding-right: 0em; cursor: url('../images/tex_cursor_mouse_shadow.png'), default;" color="#FFFFFF"; target="VIEW"; onmouseover="parent.DITCH.mPlay(&#39;ui_select&#39;); Text_MouseOver(&#39;label1_&#39;); Text_MouseOver(&#39;label2_&#39;)"  onclick="javascript:NextPage(-1);" onmouseout="Text_MouseOut(&#39;label1_&#39;); Text_MouseOut(&#39;label2_&#39;)">Previous</a><a id="label2_"; color="#000000"; class="Button_Right" style= "padding-left: 0em; padding-right: 0em;">◆</a>
+<a id="label3_"; color="#000000"; class="Button_Right" style= "padding-left: 0em; padding-right: 0em;">◆</a><a class="Intro_Center" style="padding-left: 0em; padding-right: 0em; cursor: url('../images/tex_cursor_mouse_shadow.png'), default;" color="#FFFFFF"; target="VIEW"; onmouseover="parent.DITCH.mPlay(&#39;ui_select&#39;); Text_MouseOver(&#39;label3_&#39;); Text_MouseOver(&#39;label4_&#39;)"  onclick="javascript:NextPage(1);" onmouseout="Text_MouseOut(&#39;label3_&#39;); Text_MouseOut(&#39;label4_&#39;)">Next</a><a id="label4_"; color="#000000"; class="Button_Right" style= "padding-left: 0em; padding-right: 0em;">◆</a>
+&emsp;&emsp;
+<hr>
+</div>
+</body>
+</html>
+
+<script type="text/javascript">
+function Text_MouseOver(thelabel) {
+	document.getElementById(thelabel).style.color = "#FFFFFF";
+}
+
+function Text_MouseOut(thelabel) {
+	document.getElementById(thelabel).style.color = "#000000";
+}
+
+function getCurrentPageNumber() {
+    try {
+        const path = window.location.pathname;
+		const PageNumber = window.location.pathname.split('/').pop().split('.')[0].split('_').pop();
+        return PageNumber || '0';
+    } catch (e) {
+        console.error("获取页面名称失败:", e);
+        return '';
+    }
+}
+
+function NextPage(i) {
+	console.log(window.location.pathname);
+	const PageNumber = window.location.pathname.split('/').pop().split('.')[0].split('_').pop();
+	var PageNum = Number(PageNumber);
+	console.log(PageNumber);
+	console.log(PageNum);
+	PageNum = PageNum+i;
+	var strPageNum = String(PageNum);
+	JumpToPage(strPageNum);
+}
+
+function JumpToPage(PageNum){
+	const PagePrefix = window.location.pathname.split('/').pop().split('.')[0].split('_')[0];
+	console.log(PageNum);
+	var TargetPage = PagePrefix+'_'+PageNum+'.htm';
+	console.log(TargetPage);
+	checkPageExists(TargetPage).then(exists => {
+		if (exists) {
+			parent.DITCH.mPlay('ui_ok');
+			window.location.href = TargetPage;
+		} else {
+			parent.DITCH.mPlay('ui_cancel');
+		}
+	});
+}
+
+async function checkPageExists(url) {
+    try {
+        const response = await fetch(url, { method: 'HEAD' });
+        // 200-299 之间的状态码都表示请求成功（页面存在）
+        return response.ok; 
+    } catch (error) {
+        // 网络错误、跨域拦截等情况会进入这里
+        console.error("检查页面失败:", error);
+        return false;
+    }
+}
+</script>

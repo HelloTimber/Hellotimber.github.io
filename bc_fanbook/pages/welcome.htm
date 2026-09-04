@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>游戏背景</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body style="background:#000000 url('../images/fanbook/tex_terminal_logo_clean_a30.jpg') no-repeat; color: #000000; background-position: top center; background-size: auto; cursor: url('../images/tex_cursor_mouse_shadow.png'), default">
+<div class="Title1">
+<br>
+<br>
+<p><strong>The World of<br>Citadel</strong></p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr></div>
+<div class="Title2">
+<p>A guide for the confused Martyrs to help them navigate the end of the world.</p>
+</div>
+<div class="Text_Description">
+<p>This is a fan book.<br>
+In case you bought this as a book, you have been scammed!<br>
+This is a document that is free online and hasn't been released for printing.<br></p>
+<hr>
+</div>
+<div class="Intro_Center">
+<p>There was once a kingdom of 10 billion people.<br>
+Demons led by seven trumpeters descended from the sky and destroyed the civilization of humankind, the sea withered and the land was decayed.</p>
+<p>9,999,856,000 people were slaughtered. The mass center of the star was shifted and the sun no longer rose or set. There were those who sided with the oppressed people. Angels appeared from the depths of the severed land and guided the survivors to the twilight realm, a land where humans could survive.</p>
+<p>The angels built a group of mechanical fortresses called “The Citadel” to protect the remaining humankind, as the last sphere of human existence."<br></p>
+</div>
+<div class="Intro_Left">
+<hr>
+<p><strong>White text</strong>: Enough to be accurate or confirmed.</p>
+<strong><p style="color: #FF0000;">Red text</strong>: Speculation/theories/lack of info.</p>
+<p>&nbsp;</p>
+</body>
+</html>
+
+<script type="text/javascript">
+function Text_MouseOver(thelabel) {
+	document.getElementById(thelabel).style.color = "#FFFFFF";
+}
+
+function Text_MouseOut(thelabel) {
+	document.getElementById(thelabel).style.color = "#000000";
+}
+
+function getCurrentPageNumber() {
+    try {
+        const path = window.location.pathname;
+		const PageNumber = window.location.pathname.split('/').pop().split('.')[0].split('_').pop();
+        return PageNumber || '0';
+    } catch (e) {
+        console.error("获取页面名称失败:", e);
+        return '';
+    }
+}
+
+function NextPage(i) {
+	console.log(window.location.pathname);
+	const PageNumber = window.location.pathname.split('/').pop().split('.')[0].split('_').pop();
+	var PageNum = Number(PageNumber);
+	console.log(PageNumber);
+	console.log(PageNum);
+	PageNum = PageNum+i;
+	var strPageNum = String(PageNum);
+	JumpToPage(strPageNum);
+}
+
+function JumpToPage(PageNum){
+	const PagePrefix = window.location.pathname.split('/').pop().split('.')[0].split('_')[0];
+	console.log(PageNum);
+	var TargetPage = PagePrefix+'_'+PageNum+'.htm';
+	console.log(TargetPage);
+	checkPageExists(TargetPage).then(exists => {
+		if (exists) {
+			parent.DITCH.mPlay('ui_ok');
+			window.location.href = TargetPage;
+		} else {
+			parent.DITCH.mPlay('ui_cancel');
+		}
+	});
+}
+
+async function checkPageExists(url) {
+    try {
+        const response = await fetch(url, { method: 'HEAD' });
+        // 200-299 之间的状态码都表示请求成功（页面存在）
+        return response.ok; 
+    } catch (error) {
+        // 网络错误、跨域拦截等情况会进入这里
+        console.error("检查页面失败:", error);
+        return false;
+    }
+}
+</script>

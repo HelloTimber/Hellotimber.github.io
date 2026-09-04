@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Characters</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body style="background:#000000 url('../images/fanbook/tex_terminal_logo_clean_a30.jpg') no-repeat; color: #000000; background-position: top center; background-attachment: fixed; background-size: auto; cursor: url('../images/tex_cursor_mouse_shadow.png'), default">
+<a id="pageheader_a">pageheader_a</a>
+<div class="Title2">
+<p><strong>[Demons (In reality Angels)]</strong></p>
+</div>
+<div class="Text_Main_L">
+<table border="4" align="center" cellpadding="10">
+<tbody>
+<tr>
+<td><p class="Text_Title">Argandea The Demon of Purity</p></td>
+<td><center><IMG SRC="../images/fanbook/characters/angels/tex_lineart_boss_1_argandea_the_demon_of_purity.png" style="max-width: auto; max-height: 512px; display: block;"></center></td>
+</tr>
+<tr>
+<td><center><IMG SRC="../images/fanbook/characters/angels/tex_lineart_boss_2_sloane_the_demon_of_temperance.png" style="max-width: auto; max-height: 512px; display: block;"></center></td>
+<td><p class="Text_Title">Sloane The Demon of Temperance</p></td>
+</tr>
+<tr>
+<td><p class="Text_Title">Titus the Demon of Justice</p></td>
+<td><center><IMG SRC="../images/fanbook/characters/angels/tex_lineart_boss_3_titus_the_demon_of_justice.png" style="max-width: auto; max-height: 512px; display: block;"></center></td>
+</tr>
+<tr>
+<td><center><IMG SRC="../images/fanbook/characters/angels/tex_lineart_boss_4_claudandus_the_demon_of_humility_.png" style="max-width: auto; max-height: 512px; display: block;"></center></td>
+<td><p class="Text_Title">Claudandus The Demon of Humility</p></td>
+</tr>
+<tr>
+<td><p class="Text_Title">Pantagruel The Demon of Diligence</p></td>
+<td><center><IMG SRC="../images/fanbook/characters/angels/tex_lineart_boss_5_pantagruel_the_demon_of_diligence.png" style="max-width: auto; max-height: 512px; display: block;"></center></td>
+</tr>
+<tr>
+<td><center><IMG SRC="../images/fanbook/characters/angels/tex_lineart_boss_6_grimaldia_the_demon_of_patience.png" style="max-width: auto; max-height: 512px; display: block;"></center></td>
+<td><p class="Text_Title">Grimardia The Demon of Patience</p></td>
+</tr>
+<tr>
+<td><p class="Text_Title">Xenon The Demon of Charity</p></td>
+<td><center><IMG SRC="../images/fanbook/characters/angels/tex_lineart_boss_7_xenon_the_demon_of_charity.png" style="max-width: auto; max-height: 512px; display: block;"></center></td>
+</tr>
+<tr>
+<td><center><IMG SRC="../images/fanbook/characters/angels/tex_lineart_boss_8_elulu_the_demon_of_salvation.png" style="max-width: auto; max-height: 512px; display: block;"></center></td>
+<td><p class="Text_Title">Elulu The Demon of Salvation</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+<a id="pageheader_b">pageheader_b</a>
+</body>
+</html>
+
+<script type="text/javascript">
+function Text_MouseOver(thelabel) {
+	document.getElementById(thelabel).style.color = "#FFFFFF";
+}
+
+function Text_MouseOut(thelabel) {
+	document.getElementById(thelabel).style.color = "#000000";
+}
+
+function getCurrentPageNumber() {
+    try {
+        const path = window.location.pathname;
+		const PageNumber = window.location.pathname.split('/').pop().split('.')[0].split('_').pop();
+        return PageNumber || '0';
+    } catch (e) {
+        console.error("获取页面名称失败:", e);
+        return '';
+    }
+}
+
+fetch('pageheader_a.htm')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('pageheader_a').innerHTML = data;
+	document.getElementById('TextBox_JumpTo_').placeholder = getCurrentPageNumber();
+	document.getElementById('pageprefix_').innerText = window.location.pathname.split('/').pop().split('.')[0].split('_')[0];
+	const form_a = document.getElementById('TextBoxForm_');
+	form_a.addEventListener('submit', function(event) {
+		event.preventDefault(); 
+		const value = document.getElementById('TextBox_JumpTo_').value;
+		JumpToPage(value);
+		});
+  });
+  fetch('pageheader_b.htm')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('pageheader_b').innerHTML = data;
+	document.getElementById('TextBox_JumpTo').placeholder = getCurrentPageNumber();
+	document.getElementById('pageprefix').innerText = window.location.pathname.split('/').pop().split('.')[0].split('_')[0];
+	const form_a = document.getElementById('TextBoxForm');
+	form_a.addEventListener('submit', function(event) {
+		event.preventDefault(); 
+		const value = document.getElementById('TextBox_JumpTo').value;
+		JumpToPage(value);
+		});
+	});
+
+function NextPage(i) {
+	console.log(window.location.pathname);
+	const PageNumber = window.location.pathname.split('/').pop().split('.')[0].split('_').pop();
+	var PageNum = Number(PageNumber);
+	console.log(PageNumber);
+	console.log(PageNum);
+	PageNum = PageNum+i;
+	var strPageNum = String(PageNum);
+	JumpToPage(strPageNum);
+}
+
+function JumpToPage(PageNum){
+	const PagePrefix = window.location.pathname.split('/').pop().split('.')[0].split('_')[0];
+	console.log(PageNum);
+	var TargetPage = PagePrefix+'_'+PageNum+'.htm';
+	console.log(TargetPage);
+	checkPageExists(TargetPage).then(exists => {
+		if (exists) {
+			parent.DITCH.mPlay('ui_ok');
+			window.location.href = TargetPage;
+		} else {
+			parent.DITCH.mPlay('ui_cancel');
+		}
+	});
+}
+
+async function checkPageExists(url) {
+    try {
+        const response = await fetch(url, { method: 'HEAD' });
+        // 200-299 之间的状态码都表示请求成功（页面存在）
+        return response.ok; 
+    } catch (error) {
+        // 网络错误、跨域拦截等情况会进入这里
+        console.error("检查页面失败:", error);
+        return false;
+    }
+}
+</script>

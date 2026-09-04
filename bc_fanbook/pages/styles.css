@@ -1,0 +1,196 @@
+﻿.Title1 {
+	font-size: 62pt;
+	text-align: center;
+	color: #FFFFFF;
+	font-family: "Tahoma";
+	text-indent: 0em;
+	padding-left: 4em;
+	padding-right: 4em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+}
+.Title2 {
+	font-size: 45pt;
+	text-align: center;
+	color: #FFFFFF;
+	font-family: "Tahoma";
+	text-indent: 0em;
+	padding-left: 4em;
+	padding-right: 4em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+}
+.Text_Description {
+	font-size: 10pt;
+	text-align: left;
+	color: #FFFFFF;
+	font-family: "Arial MT";
+	text-indent: 0em;
+	padding-left: 8em;
+	padding-right: 4em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+}
+.Intro_Center {
+	font-size: 20pt;
+	text-align: center;
+	color: #FFFFFF;
+	font-family: "Arial MT";
+	text-indent: 0em;
+	padding-left: 4em;
+	padding-right: 4em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+}
+.Intro_Left {
+	font-size: 20pt;
+	text-align: left;
+	color: #FFFFFF;
+	font-family: "Arial MT";
+	text-indent: 0em;
+	padding-left: 4em;
+	padding-right: 4em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+}
+.Intro_Right {
+	font-size: 20pt;
+	text-align: right;
+	color: #FFFFFF;
+	font-family: "Arial MT";
+	text-indent: 0em;
+	padding-left: 4em;
+	padding-right: 4em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+}
+.Button_Left {
+	font-size: 20pt;
+	text-align: left;
+	color: #000000;
+	font-family: "Arial MT";
+	text-indent: 0em;
+	padding-left: 4em;
+	padding-right: 4em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+}
+.Button_Center {
+	font-size: 20pt;
+	text-align: center;
+	color: #000000;
+	font-family: "Arial MT";
+	text-indent: 0em;
+	padding-left: 4em;
+	padding-right: 4em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+}
+.Button_Right {
+	font-size: 20pt;
+	text-align: right;
+	color: #000000;
+	font-family: "Arial MT";
+	text-indent: 0em;
+	padding-left: 4em;
+	padding-right: 4em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+}
+.Text_Title {
+	font-size: 18pt;
+	text-align: center;
+	color: #FFFFFF;
+	font-family: "Arial MT";
+	text-indent: 0em;
+	padding-left: 4em;
+	padding-right: 4em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+}
+.Text_Title2 {
+	font-size: 16pt;
+	text-align: center;
+	color: #FFFFFF;
+	font-family: "Arial MT";
+	text-indent: 0em;
+	padding-left: 4em;
+	padding-right: 4em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+}
+.Text_Main_L {
+	font-size: 14pt;
+	text-align: left;
+	color: #FFFFFF;
+	font-family: "Arial MT";
+	text-indent: 2em;
+	padding-left: 4em;
+	padding-right: 4em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+}
+.Text_Main_R {
+	font-size: 14pt;
+	text-align: right;
+	color: #FFFFFF;
+	font-family: "Arial MT";
+	text-indent: 0em;
+	padding-left: 4em;
+	padding-right: 4em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+}
+.Text_Main_C {
+	font-size: 14pt;
+	text-align: center;
+	color: #FFFFFF;
+	font-family: "Arial MT";
+	text-indent: 0em;
+	padding-left: 4em;
+	padding-right: 4em;
+	a {text-decoration:none;}
+	a:link {color:#FFFFFF;}
+	a:visited {color:#FFFFFF;}
+	a:hover {color:#FFFFFF;}
+	a:active {color:#FFFFFF;}
+}
