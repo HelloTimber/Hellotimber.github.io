@@ -3,12 +3,19 @@
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Lore Images</title>
+<title>Dictionary</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body style="background:#000000 url('../images/fanbook/tex_terminal_logo_clean_a30.png') no-repeat; color: #000000; background-position: top center; background-attachment: fixed; background-size: auto; cursor: url('../images/tex_cursor_mouse_shadow.png'), default">
 <a id="pageheader_a">pageheader_a</a>
-<center><IMG SRC="../images/fanbook/LoreImages/008.jpg" style="max-width: 100%; height: auto; display: block;"></center>
+<div class="Title1">
+<br>
+<br>
+<p><strong>Dictionary</strong></p>
+<br>
+<br>
+<br>
+</div>
 <hr>
 <a id="pageheader_b">pageheader_b</a>
 </body>
@@ -21,17 +28,6 @@ function Text_MouseOver(thelabel) {
 
 function Text_MouseOut(thelabel) {
 	document.getElementById(thelabel).style.color = "#000000";
-}
-
-function getCurrentPageNumber() {
-    try {
-        const path = window.location.pathname;
-		const PageNumber = window.location.pathname.split('/').pop().split('.')[0].split('_').pop();
-        return PageNumber || '0';
-    } catch (e) {
-        console.error("获取页面名称失败:", e);
-        return '';
-    }
 }
 
 fetch('pageheader_a.htm')
@@ -60,6 +56,17 @@ fetch('pageheader_a.htm')
 		JumpToPage(value);
 		});
 	});
+
+function getCurrentPageNumber() {
+    try {
+        const path = window.location.pathname;
+		const PageNumber = window.location.pathname.split('/').pop().split('.')[0].split('_').pop();
+        return PageNumber || '0';
+    } catch (e) {
+        console.error("获取页面名称失败:", e);
+        return '';
+    }
+}
 
 function NextPage(i) {
 	console.log(window.location.pathname);

@@ -194,3 +194,8 @@
 	a:hover {color:#FFFFFF;}
 	a:active {color:#FFFFFF;}
 }
+.ImgStyle {
+	max-width: 512px;
+	max-height: 512px;
+	display: block;
+}

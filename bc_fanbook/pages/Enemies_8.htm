@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Enemies</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body style="background:#000000 url('../images/fanbook/tex_terminal_logo_clean_a30.png') no-repeat; color: #000000; background-position: top center; background-attachment: fixed; background-size: auto; cursor: url('../images/tex_cursor_mouse_shadow.png'), default">
+<a id="pageheader_a">pageheader_a</a>
+<div class="Title1">
+<p>Beyond Citadel</p>
+</div>
+<div class="Title2">
+<p>Landwhale</p>
+</div>
+<div class="Text_Title">
+<p>It is no exaggeration to say that land whales are the dominant species on the planet today...</p>
+<p>At the same time, they are a valuable resource. Their hardened bodies, capable of working on the day side, contain fat that can be used as fuel.</p>
+</div>
+<div class="Text_Main_L">
+<table border="4" align="center" cellpadding="10">
+<tbody>
+<tr>
+<td><p class="Text_Title">Warrior</p>
+<p style="text-indent: 2em;" >"Warrior" class land whales are the hatchlings and the smallest of them. ..There are two types of them; ones who run toward you and exhale high-temperature flammable gas at you. ..The other ones who keep away from you and spit strong acid at you.</p>
+</td>
+<td><center><IMG SRC="../images/fanbook/enemies/LandWhale/tex_enemy_landwhale_warrior_shopmenu.png" style="max-width: 100%; max-height: 512px; display: block;"></center></td>
+</tr>
+<tr>
+<td><center><IMG SRC="../images/fanbook/enemies/LandWhale/tex_enemy_landwhale_tank_shopmenu.png" style="max-width: 100%; max-height: 512px; display: block;"></center></td>
+<td><p class="Text_Title">Tanker</p>
+<p style="text-indent: 2em;" >These "Tank" class are medium-sized landwhales. ..They grow missiles and plasma bolts inside their bodies and protect their hives...</p></td>
+</tr>
+<tr>
+<td><p class="Text_Title">Fortress</p>
+<p style="text-indent: 2em;" >Only a few hatchlings can grow to this "Fortress" class land whales and it's a rare opportunity to face this threat. They generate homing energy projectiles inside their bio-reactors and overwhelm you with the barrages of them.</p>
+</td>
+<td><center><IMG SRC="../images/fanbook/enemies/LandWhale/tex_enemy_landwhale_fortress_shopmenu.png" style="max-width: 100%; max-height: 512px; display: block;"></center></td>
+</tr>
+<tr>
+<td><center><IMG SRC="../images/fanbook/enemies/LandWhale/tex_enemy_hive_landwhale_1.png" style="max-width: 100%; max-height: 512px; display: block;"></center></td>
+<td><p class="Text_Title">Hive</p>
+<p style="text-indent: 2em;" >The "Hive" class land whale has no fighting ability of its own, but has the ability to give birth to "warrior class" land whales.</p></td>
+</tr>
+</tbody>
+</table>
+<br>
+<br>
+</div>
+<hr>
+<a id="pageheader_b">pageheader_b</a>
+</body>
+</html>
+
+<script type="text/javascript">
+function Text_MouseOver(thelabel) {
+	document.getElementById(thelabel).style.color = "#FFFFFF";
+}
+
+function Text_MouseOut(thelabel) {
+	document.getElementById(thelabel).style.color = "#000000";
+}
+
+function getCurrentPageNumber() {
+    try {
+        const path = window.location.pathname;
+		const PageNumber = window.location.pathname.split('/').pop().split('.')[0].split('_').pop();
+        return PageNumber || '0';
+    } catch (e) {
+        console.error("获取页面名称失败:", e);
+        return '';
+    }
+}
+
+fetch('pageheader_a.htm')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('pageheader_a').innerHTML = data;
+	document.getElementById('TextBox_JumpTo_').placeholder = getCurrentPageNumber();
+	document.getElementById('pageprefix_').innerText = window.location.pathname.split('/').pop().split('.')[0].split('_')[0];
+	const form_a = document.getElementById('TextBoxForm_');
+	form_a.addEventListener('submit', function(event) {
+		event.preventDefault(); 
+		const value = document.getElementById('TextBox_JumpTo_').value;
+		JumpToPage(value);
+		});
+  });
+  fetch('pageheader_b.htm')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('pageheader_b').innerHTML = data;
+	document.getElementById('TextBox_JumpTo').placeholder = getCurrentPageNumber();
+	document.getElementById('pageprefix').innerText = window.location.pathname.split('/').pop().split('.')[0].split('_')[0];
+	const form_a = document.getElementById('TextBoxForm');
+	form_a.addEventListener('submit', function(event) {
+		event.preventDefault(); 
+		const value = document.getElementById('TextBox_JumpTo').value;
+		JumpToPage(value);
+		});
+	});
+
+function NextPage(i) {
+	console.log(window.location.pathname);
+	const PageNumber = window.location.pathname.split('/').pop().split('.')[0].split('_').pop();
+	var PageNum = Number(PageNumber);
+	console.log(PageNumber);
+	console.log(PageNum);
+	PageNum = PageNum+i;
+	var strPageNum = String(PageNum);
+	JumpToPage(strPageNum);
+}
+
+function JumpToPage(PageNum){
+	const PagePrefix = window.location.pathname.split('/').pop().split('.')[0].split('_')[0];
+	console.log(PageNum);
+	var TargetPage = PagePrefix+'_'+PageNum+'.htm';
+	console.log(TargetPage);
+	checkPageExists(TargetPage).then(exists => {
+		if (exists) {
+			parent.DITCH.mPlay('ui_ok');
+			window.location.href = TargetPage;
+		} else {
+			parent.DITCH.mPlay('ui_cancel');
+		}
+	});
+}
+
+async function checkPageExists(url) {
+    try {
+        const response = await fetch(url, { method: 'HEAD' });
+        // 200-299 之间的状态码都表示请求成功（页面存在）
+        return response.ok; 
+    } catch (error) {
+        // 网络错误、跨域拦截等情况会进入这里
+        console.error("检查页面失败:", error);
+        return false;
+    }
+}
+
+function jumpToImage(theid1, theid2)
+{
+	var doc1 = document.getElementById(theid1);
+	var doc2 = document.getElementById(theid2);
+	doc1.style.display = "none";
+    doc2.style.display = "inline";
+}
+
+var allowcommandoguro = true;
+function CommandoGuro()
+	{
+		if(!allowcommandoguro)
+		{
+			return;
+		}
+		allowcommandoguro = false;
+		setTimeout("allowcommandoguro = true",1500);
+        var commando0 = document.getElementById("commando0");
+        var commando1 = document.getElementById("commando1");
+        var commando2 = document.getElementById("commando2");
+		var commando3 = document.getElementById("commando3");
+        var commando4 = document.getElementById("commando4");
+		var commando5 = document.getElementById("commando5");
+		var commando6 = document.getElementById("commando6");
+		var commando7 = document.getElementById("commando7");
+		var commando8 = document.getElementById("commando8");
+        if (commando0.style.display != "none")
+		{
+            commando0.style.display = "none";
+            commando1.style.display = "inline";
+			parent.DITCH.mPlay("bonus_audio/falldown_2");
+			parent.DITCH.mPlay("bonus_audio/voice_death_32");
+        }
+        else if (commando1.style.display != "none")
+		{
+			//parent.DITCH.buzz.all().stop();
+            commando1.style.display = "none";
+            commando2.style.display = "inline";
+			parent.DITCH.mPlay("bonus_audio/wearing");
+			parent.DITCH.mPlay("bonus_audio/voice_death_34");
+        }
+		else if(commando2.style.display == "inline")
+		{
+			//parent.DITCH.buzz.all().stop();
+            commando2.style.display = "none";
+			commando3.style.display = "inline";
+			parent.DITCH.mPlay("bonus_audio/Lose_Limb");
+			parent.DITCH.mPlay("bonus_audio/voice_death_himei_kyaaaaaaaa");
+        }
+		else if(commando3.style.display == "inline")
+		{
+			//parent.DITCH.buzz.all().stop();
+			commando3.style.display = "none";
+			commando4.style.display = "inline";
+			parent.DITCH.mPlay("bonus_audio/Normal_Gore_sound");
+			parent.DITCH.mPlay("bonus_audio/voice_death_22");
+        }
+		else if(commando4.style.display == "inline")
+		{
+			//parent.DITCH.buzz.all().stop();
+			commando4.style.display = "none";
+			commando5.style.display = "inline";
+			parent.DITCH.mPlay("bonus_audio/hit_sound");
+			parent.DITCH.mPlay("bonus_audio/voice_death_20");
+        }
+		else if(commando5.style.display == "inline")
+		{
+			//parent.DITCH.buzz.all().stop();
+			commando5.style.display = "none";
+			commando6.style.display = "inline";
+			parent.DITCH.mPlay("bonus_audio/Explosive_Gore_Sound");
+			parent.DITCH.mPlay("bonus_audio/voice_death_17");
+        }
+		else if(commando6.style.display == "inline")
+		{
+			//parent.DITCH.buzz.all().stop();
+			commando6.style.display = "none";
+			commando7.style.display = "inline";
+			parent.DITCH.mPlay("bonus_audio/Lose_Limb");
+        }
+		else if(commando7.style.display == "inline")
+		{
+			//parent.DITCH.buzz.all().stop();
+			commando7.style.display = "none";
+			commando8.style.display = "inline";
+			parent.DITCH.mPlay("bonus_audio/Lose_Limb");
+        }
+		//else if(pic8.style.display == "inline")
+		//{
+        //    pic0.style.display = "inline";
+		//	pic8.style.display = "none";
+        //}
+    }
+</script>

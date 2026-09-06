@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Factions</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body style="background:#000000 url('../images/fanbook/tex_terminal_logo_clean_a30.png') no-repeat; color: #000000; background-position: top center; background-attachment: fixed; background-size: auto; cursor: url('../images/tex_cursor_mouse_shadow.png'), default">
+<a id="pageheader_a">pageheader_a</a>
+<div class="Text_Main_L">
+<p><strong>Great Army</strong>: "The Grand Army was formed under the guise that it was an organization for mankind to defend themselves with mankind's own hands. In reality, it is not. It was formed as an organization to protect the Machine Angels. Because they couldn't stand the sight of the Machine Angels being torn to pieces fighting for humanity day after day." Due to being connected to the network, after the creation of the sleeping god, their free will was taken away and they became puppets. After the end of The Citadel they join the Millenarianism as puppets that lack free will.</p>
+<p><strong>UN</strong>: United Nations then turned into a religious faction "a religious organization whose ultimate goal is the survival of the human race and whose origins can be traced back to before the 'Starry Night'." Its sub factions are, U.N.S., U.N.E.F., U.N.E.S.C.O.
+<center><IMG id="gallary" SRC="../images/fanbook/Factions/tex_artwork_gallery_zone_1_3.png" height="256" onclick="javascript:SwitchIMG('gallary');"></center></p>
+<p><strong>United Nations Salvation(U.N.S.)</strong>: In charge  of the evacuation shelters. And possibly the Warships.</p>
+<p><strong>United Nations Emergency Force(U.N.E.F.)</strong>: "For a long time, the 3rd U.N .Emergency Force was the only military organisation on Earth until the formation of the Grand Army. .Its main force consisted of the Machine Angels and Angel ships armed with cybernetics. ..That Edelweiss is one of the few remaining equipments." Humans would use the Xeta rifle and exoskeletons.</p>
+<p><strong>United Nations Educational, Scientific and Cultural Organization(U.N.E.S.C.O.)</strong>: In charge of preserving cultural heritage and Advancing scientific collaborations.</p>
+<p><strong>Millenarianism</strong>: Army that serves the 7 Trumpeters who seek to bring back God. They "destroyed all traces of human science and culture in the Iron Age." After the events of the first game the Great Army, puppets that roam that planet join them as their sentinels</p>
+<p><strong>The Organa</strong>: "They are martyrs for a noble cause that can only be achieved in the flesh. You know how hard to survive on this damned place in the flesh." They have little to no cybernetics. A resistance composed of members of The Citadel, they fight against the 7 trumpeters and are the guardians of the tombstones of the Seven Great Angels.</p>
+</div>
+<hr>
+<a id="pageheader_b">pageheader_b</a>
+</body>
+</html>
+
+<script type="text/javascript">
+function Text_MouseOver(thelabel) {
+	document.getElementById(thelabel).style.color = "#FFFFFF";
+}
+
+function Text_MouseOut(thelabel) {
+	document.getElementById(thelabel).style.color = "#000000";
+}
+
+function SwitchIMG(img){
+	if (img == "fumopic")
+	{
+		if (document.getElementById("fumopic").height == "320")
+		{
+			document.getElementById("fumopic").height = "1742";
+			mPlay("alert");
+		}
+		else
+		{
+			document.getElementById("fumopic").height = "320";
+			mPlay("alert_a");
+		}
+	}
+	else if(img == "gallary")
+	if (document.getElementById("gallary").height == "256")
+	{
+		document.getElementById("gallary").height = "512";
+	}
+	else
+	{
+		document.getElementById("gallary").height = "256";
+	}
+}
+
+function getCurrentPageNumber() {
+ try {
+ const path = window.location.pathname;
+		const PageNumber = window.location.pathname.split('/').pop().split('.')[0].split('_').pop();
+ return PageNumber || '0';
+ } catch (e) {
+ console.error("获取页面名称失败:", e);
+ return '';
+ }
+}
+
+fetch('pageheader_a.htm')
+ .then(response => response.text())
+ .then(data => {
+ document.getElementById('pageheader_a').innerHTML = data;
+	document.getElementById('TextBox_JumpTo_').placeholder = getCurrentPageNumber();
+	document.getElementById('pageprefix_').innerText = window.location.pathname.split('/').pop().split('.')[0].split('_')[0];
+	const form_a = document.getElementById('TextBoxForm_');
+	form_a.addEventListener('submit', function(event) {
+		event.preventDefault(); 
+		const value = document.getElementById('TextBox_JumpTo_').value;
+		JumpToPage(value);
+		});
+ });
+ fetch('pageheader_b.htm')
+ .then(response => response.text())
+ .then(data => {
+ document.getElementById('pageheader_b').innerHTML = data;
+	document.getElementById('TextBox_JumpTo').placeholder = getCurrentPageNumber();
+	document.getElementById('pageprefix').innerText = window.location.pathname.split('/').pop().split('.')[0].split('_')[0];
+	const form_a = document.getElementById('TextBoxForm');
+	form_a.addEventListener('submit', function(event) {
+		event.preventDefault(); 
+		const value = document.getElementById('TextBox_JumpTo').value;
+		JumpToPage(value);
+		});
+	});
+
+function NextPage(i) {
+	console.log(window.location.pathname);
+	const PageNumber = window.location.pathname.split('/').pop().split('.')[0].split('_').pop();
+	var PageNum = Number(PageNumber);
+	console.log(PageNumber);
+	console.log(PageNum);
+	PageNum = PageNum+i;
+	var strPageNum = String(PageNum);
+	JumpToPage(strPageNum);
+}
+
+function JumpToPage(PageNum){
+	const PagePrefix = window.location.pathname.split('/').pop().split('.')[0].split('_')[0];
+	console.log(PageNum);
+	var TargetPage = PagePrefix+'_'+PageNum+'.htm';
+	console.log(TargetPage);
+	checkPageExists(TargetPage).then(exists => {
+		if (exists) {
+			parent.DITCH.mPlay('ui_ok');
+			window.location.href = TargetPage;
+		} else {
+			parent.DITCH.mPlay('ui_cancel');
+		}
+	});
+}
+
+async function checkPageExists(url) {
+ try {
+ const response = await fetch(url, { method: 'HEAD' });
+ // 200-299 之间的状态码都表示请求成功（页面存在）
+ return response.ok; 
+ } catch (error) {
+ // 网络错误、跨域拦截等情况会进入这里
+ console.error("检查页面失败:", error);
+ return false;
+ }
+}
+
+function jumpToImage(theid1, theid2)
+{
+	var doc1 = document.getElementById(theid1);
+	var doc2 = document.getElementById(theid2);
+	doc1.style.display = "none";
+ doc2.style.display = "inline";
+}
+
+var allowcommandoguro = true;
+function CommandoGuro()
+	{
+		if(!allowcommandoguro)
+		{
+			return;
+		}
+		allowcommandoguro = false;
+		setTimeout("allowcommandoguro = true",1500);
+ var commando0 = document.getElementById("commando0");
+ var commando1 = document.getElementById("commando1");
+ var commando2 = document.getElementById("commando2");
+		var commando3 = document.getElementById("commando3");
+ var commando4 = document.getElementById("commando4");
+		var commando5 = document.getElementById("commando5");
+		var commando6 = document.getElementById("commando6");
+		var commando7 = document.getElementById("commando7");
+		var commando8 = document.getElementById("commando8");
+ if (commando0.style.display != "none")
+		{
+ commando0.style.display = "none";
+ commando1.style.display = "inline";
+			parent.DITCH.mPlay("bonus_audio/falldown_2");
+			parent.DITCH.mPlay("bonus_audio/voice_death_32");
+ }
+ else if (commando1.style.display != "none")
+		{
+			//parent.DITCH.buzz.all().stop();
+ commando1.style.display = "none";
+ commando2.style.display = "inline";
+			parent.DITCH.mPlay("bonus_audio/wearing");
+			parent.DITCH.mPlay("bonus_audio/voice_death_34");
+ }
+		else if(commando2.style.display == "inline")
+		{
+			//parent.DITCH.buzz.all().stop();
+ commando2.style.display = "none";
+			commando3.style.display = "inline";
+			parent.DITCH.mPlay("bonus_audio/Lose_Limb");
+			parent.DITCH.mPlay("bonus_audio/voice_death_himei_kyaaaaaaaa");
+ }
+		else if(commando3.style.display == "inline")
+		{
+			//parent.DITCH.buzz.all().stop();
+			commando3.style.display = "none";
+			commando4.style.display = "inline";
+			parent.DITCH.mPlay("bonus_audio/Normal_Gore_sound");
+			parent.DITCH.mPlay("bonus_audio/voice_death_22");
+ }
+		else if(commando4.style.display == "inline")
+		{
+			//parent.DITCH.buzz.all().stop();
+			commando4.style.display = "none";
+			commando5.style.display = "inline";
+			parent.DITCH.mPlay("bonus_audio/hit_sound");
+			parent.DITCH.mPlay("bonus_audio/voice_death_20");
+ }
+		else if(commando5.style.display == "inline")
+		{
+			//parent.DITCH.buzz.all().stop();
+			commando5.style.display = "none";
+			commando6.style.display = "inline";
+			parent.DITCH.mPlay("bonus_audio/Explosive_Gore_Sound");
+			parent.DITCH.mPlay("bonus_audio/voice_death_17");
+ }
+		else if(commando6.style.display == "inline")
+		{
+			//parent.DITCH.buzz.all().stop();
+			commando6.style.display = "none";
+			commando7.style.display = "inline";
+			parent.DITCH.mPlay("bonus_audio/Lose_Limb");
+ }
+		else if(commando7.style.display == "inline")
+		{
+			//parent.DITCH.buzz.all().stop();
+			commando7.style.display = "none";
+			commando8.style.display = "inline";
+			parent.DITCH.mPlay("bonus_audio/Lose_Limb");
+ }
+		//else if(pic8.style.display == "inline")
+		//{
+ // pic0.style.display = "inline";
+		//	pic8.style.display = "none";
+ //}
+ }
+</script>
