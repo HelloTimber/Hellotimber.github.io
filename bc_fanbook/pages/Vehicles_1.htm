@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Vehicles</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body style="background:#000000 url('../images/fanbook/tex_terminal_logo_clean_a30.png') no-repeat; color: #000000; background-position: top center; background-attachment: fixed; background-size: auto; cursor: url('../images/tex_cursor_mouse_shadow.png'), default">
+<a id="pageheader_a">pageheader_a</a>
+<div class="Text_Main_L">
+<table border="4" align="center" cellpadding="10">
+<tbody>
+<tr>
+<td><p class="Text_Title">?</p>
+<p style="text-indent: 2em;" >Its name only being shown in debug menu in The Citadel, called PA(Power Armor). </p>
+</td>
+<td><center>
+<IMG id="TheCitadelArmor_1" SRC="../images/fanbook/Vehicles/thecitadel_armor/IMG_3783.png" style="max-width: 100%; max-height: 512px; display: block;">
+<IMG id="TheCitadelArmor_2" SRC="../images/fanbook/Vehicles/thecitadel_armor/IMG_3784.png" style="max-width: 100%; max-height: 512px; display: none;">
+</center></td>
+</tr>
+<tr>
+<td><center>
+<IMG id="AMX98_1" SRC="../images/fanbook/Vehicles/AMX98/item_tank_1.png" style="max-width: 100%; max-height: 512px; display: block;">
+<IMG id="AMX98_2" SRC="../images/fanbook/Vehicles/AMX98/item_tank_2.png" style="max-width: 100%; max-height: 512px; display: none;">
+<IMG id="AMX98_3"SRC="../images/fanbook/Vehicles/AMX98/item_tank_3.png" style="max-width: 100%; max-height: 512px; display: none;">
+<IMG id="AMX98_4"SRC="../images/fanbook/Vehicles/AMX98/item_tank_4.png" style="max-width: 100%; max-height: 512px; display: none;">
+<IMG id="AMX98_5"SRC="../images/fanbook/Vehicles/AMX98/item_tank_5.png" style="max-width: 100%; max-height: 512px; display: none;">
+<IMG id="AMX98_6"SRC="../images/fanbook/Vehicles/AMX98/item_tank_6.png" style="max-width: 100%; max-height: 512px; display: none;">
+<IMG id="AMX98_7"SRC="../images/fanbook/Vehicles/AMX98/item_tank_7.png" style="max-width: 100%; max-height: 512px; display: none;">
+<IMG id="AMX98_8"SRC="../images/fanbook/Vehicles/AMX98/item_tank_8.png" style="max-width: 100%; max-height: 512px; display: none;">
+</center></td>
+<td><p class="Text_Title">AMX-98 Cruiser Tank Amaranthus</p>
+<p style="text-indent: 2em;" >AMX-98 Cruiser Tank Amaranthus Equipped with a coaxial machine gun and a 152 mm smoothbore cannon that can fire AP and HE shells.</p></td>
+</tr>
+<tr>
+<td><p class="Text_Title">X-199A "Haute Couture" mobile assault platform</p>
+<p style="text-indent: 2em;" >It has excellent mobility, firepower, and armour. Both arms have a choice of three type of armaments.</p>
+</td>
+<td><center><IMG SRC="../images/fanbook/Vehicles/tex_item_powerarmor.png" style="max-width: 100%; max-height: 512px; display: block;"></center></td>
+</tr>
+<tr>
+<td><center><IMG SRC="../images/fanbook/Vehicles/tex_item_vehicle_songbird.png" style="max-width: 100%; max-height: 512px; display: block;"></center></td>
+<td><p class="Text_Title">X-97 Sonbird, a gunship of U.N.S. Edelweiss</p>
+<p style="text-indent: 2em;" >The Songbird's specs are superior to those of the Grand Army's aircraft.</p></td>
+</tr>
+</tbody>
+</table>
+<br>
+<br>
+</div>
+<hr>
+<a id="pageheader_b">pageheader_b</a>
+</body>
+</html>
+
+<script type="text/javascript">
+function Text_MouseOver(thelabel) {
+	document.getElementById(thelabel).style.color = "#FFFFFF";
+}
+
+function Text_MouseOut(thelabel) {
+	document.getElementById(thelabel).style.color = "#000000";
+}
+
+function getCurrentPageNumber() {
+    try {
+        const path = window.location.pathname;
+		const PageNumber = window.location.pathname.split('/').pop().split('.')[0].split('_').pop();
+        return PageNumber || '0';
+    } catch (e) {
+        console.error("获取页面名称失败:", e);
+        return '';
+    }
+}
+
+function jumpToImage(theid1, theid2)
+{
+	var doc1 = document.getElementById(theid1);
+	var doc2 = document.getElementById(theid2);
+	doc1.style.display = "none";
+    doc2.style.display = "inline";
+}
+
+setTimeout("AMX98TurnARound()",1000);
+setTimeout("TheCitadelArmorBlinking()",1000);
+function AMX98TurnARound()
+{
+	setTimeout("jumpToImage('AMX98_1', 'AMX98_2')",0);
+	setTimeout("jumpToImage('AMX98_2', 'AMX98_3')",200);
+	setTimeout("jumpToImage('AMX98_3', 'AMX98_4')",400);
+	setTimeout("jumpToImage('AMX98_4', 'AMX98_5')",600);
+	setTimeout("jumpToImage('AMX98_5', 'AMX98_6')",800);
+	setTimeout("jumpToImage('AMX98_6', 'AMX98_7')",1000);
+	setTimeout("jumpToImage('AMX98_7', 'AMX98_8')",1200);
+	setTimeout("jumpToImage('AMX98_8', 'AMX98_1')",1400);
+	setTimeout("AMX98TurnARound()",1600);
+}
+function TheCitadelArmorBlinking()
+{
+	setTimeout("jumpToImage('TheCitadelArmor_1', 'TheCitadelArmor_2')",0);
+	setTimeout("jumpToImage('TheCitadelArmor_2', 'TheCitadelArmor_1')",1000);
+	setTimeout("TheCitadelArmorBlinking()",2000);
+}
+
+fetch('pageheader_a.htm')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('pageheader_a').innerHTML = data;
+	document.getElementById('TextBox_JumpTo_').placeholder = getCurrentPageNumber();
+	document.getElementById('pageprefix_').innerText = window.location.pathname.split('/').pop().split('.')[0].split('_')[0];
+	const form_a = document.getElementById('TextBoxForm_');
+	form_a.addEventListener('submit', function(event) {
+		event.preventDefault(); 
+		const value = document.getElementById('TextBox_JumpTo_').value;
+		JumpToPage(value);
+		});
+  });
+  fetch('pageheader_b.htm')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('pageheader_b').innerHTML = data;
+	document.getElementById('TextBox_JumpTo').placeholder = getCurrentPageNumber();
+	document.getElementById('pageprefix').innerText = window.location.pathname.split('/').pop().split('.')[0].split('_')[0];
+	const form_a = document.getElementById('TextBoxForm');
+	form_a.addEventListener('submit', function(event) {
+		event.preventDefault(); 
+		const value = document.getElementById('TextBox_JumpTo').value;
+		JumpToPage(value);
+		});
+	});
+
+function NextPage(i) {
+	console.log(window.location.pathname);
+	const PageNumber = window.location.pathname.split('/').pop().split('.')[0].split('_').pop();
+	var PageNum = Number(PageNumber);
+	console.log(PageNumber);
+	console.log(PageNum);
+	PageNum = PageNum+i;
+	var strPageNum = String(PageNum);
+	JumpToPage(strPageNum);
+}
+
+function JumpToPage(PageNum){
+	const PagePrefix = window.location.pathname.split('/').pop().split('.')[0].split('_')[0];
+	console.log(PageNum);
+	var TargetPage = PagePrefix+'_'+PageNum+'.htm';
+	console.log(TargetPage);
+	checkPageExists(TargetPage).then(exists => {
+		if (exists) {
+			parent.DITCH.mPlay('ui_ok');
+			window.location.href = TargetPage;
+		} else {
+			parent.DITCH.mPlay('ui_cancel');
+		}
+	});
+}
+
+async function checkPageExists(url) {
+    try {
+        const response = await fetch(url, { method: 'HEAD' });
+        // 200-299 之间的状态码都表示请求成功（页面存在）
+        return response.ok; 
+    } catch (error) {
+        // 网络错误、跨域拦截等情况会进入这里
+        console.error("检查页面失败:", error);
+        return false;
+    }
+}
+
+function jumpToImage(theid1, theid2)
+{
+	var doc1 = document.getElementById(theid1);
+	var doc2 = document.getElementById(theid2);
+	doc1.style.display = "none";
+    doc2.style.display = "inline";
+}
+
+var allowcommandoguro = true;
+function CommandoGuro()
+	{
+		if(!allowcommandoguro)
+		{
+			return;
+		}
+		allowcommandoguro = false;
+		setTimeout("allowcommandoguro = true",1500);
+        var commando0 = document.getElementById("commando0");
+        var commando1 = document.getElementById("commando1");
+        var commando2 = document.getElementById("commando2");
+		var commando3 = document.getElementById("commando3");
+        var commando4 = document.getElementById("commando4");
+		var commando5 = document.getElementById("commando5");
+		var commando6 = document.getElementById("commando6");
+		var commando7 = document.getElementById("commando7");
+		var commando8 = document.getElementById("commando8");
+        if (commando0.style.display != "none")
+		{
+            commando0.style.display = "none";
+            commando1.style.display = "inline";
+			parent.DITCH.mPlay("bonus_audio/falldown_2");
+			parent.DITCH.mPlay("bonus_audio/voice_death_32");
+        }
+        else if (commando1.style.display != "none")
+		{
+			//parent.DITCH.buzz.all().stop();
+            commando1.style.display = "none";
+            commando2.style.display = "inline";
+			parent.DITCH.mPlay("bonus_audio/wearing");
+			parent.DITCH.mPlay("bonus_audio/voice_death_34");
+        }
+		else if(commando2.style.display == "inline")
+		{
+			//parent.DITCH.buzz.all().stop();
+            commando2.style.display = "none";
+			commando3.style.display = "inline";
+			parent.DITCH.mPlay("bonus_audio/Lose_Limb");
+			parent.DITCH.mPlay("bonus_audio/voice_death_himei_kyaaaaaaaa");
+        }
+		else if(commando3.style.display == "inline")
+		{
+			//parent.DITCH.buzz.all().stop();
+			commando3.style.display = "none";
+			commando4.style.display = "inline";
+			parent.DITCH.mPlay("bonus_audio/Normal_Gore_sound");
+			parent.DITCH.mPlay("bonus_audio/voice_death_22");
+        }
+		else if(commando4.style.display == "inline")
+		{
+			//parent.DITCH.buzz.all().stop();
+			commando4.style.display = "none";
+			commando5.style.display = "inline";
+			parent.DITCH.mPlay("bonus_audio/hit_sound");
+			parent.DITCH.mPlay("bonus_audio/voice_death_20");
+        }
+		else if(commando5.style.display == "inline")
+		{
+			//parent.DITCH.buzz.all().stop();
+			commando5.style.display = "none";
+			commando6.style.display = "inline";
+			parent.DITCH.mPlay("bonus_audio/Explosive_Gore_Sound");
+			parent.DITCH.mPlay("bonus_audio/voice_death_17");
+        }
+		else if(commando6.style.display == "inline")
+		{
+			//parent.DITCH.buzz.all().stop();
+			commando6.style.display = "none";
+			commando7.style.display = "inline";
+			parent.DITCH.mPlay("bonus_audio/Lose_Limb");
+        }
+		else if(commando7.style.display == "inline")
+		{
+			//parent.DITCH.buzz.all().stop();
+			commando7.style.display = "none";
+			commando8.style.display = "inline";
+			parent.DITCH.mPlay("bonus_audio/Lose_Limb");
+        }
+		//else if(pic8.style.display == "inline")
+		//{
+        //    pic0.style.display = "inline";
+		//	pic8.style.display = "none";
+        //}
+    }
+</script>
